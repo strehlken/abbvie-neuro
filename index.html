@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AbbVie neuroscience</title>
+<meta name="description" content="Two outside-in views of AbbVie's neuroscience franchise, built from SEC filings.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='9' fill='none' stroke='%231f1a14' stroke-width='2.5'/%3E%3Cline x1='32' y1='23' x2='32' y2='9' stroke='%231f1a14' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='32' y1='41' x2='32' y2='55' stroke='%231f1a14' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='23' y1='32' x2='9' y2='32' stroke='%231f1a14' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='41' y1='32' x2='55' y2='32' stroke='%231f1a14' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Brandon Grotesque', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #232324;
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem 4rem;
+}
+@media (max-width: 600px) {
+  .page { padding: 3rem 1.25rem 3rem; }
+}
+
+.title-block {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid #e5e5e8;
+}
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #8a8a92;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+h1 {
+  font-weight: 700;
+  font-size: 2.25rem;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: #232324;
+  margin-bottom: 1.25rem;
+}
+.lede {
+  font-size: 1rem;
+  color: #50505a;
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.55;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding: 1.75rem 1.75rem 1.5rem;
+  border: 1px solid #e5e5e8;
+  border-radius: 4px;
+  background: #ffffff;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.card:hover {
+  border-color: #232324;
+  transform: translateY(-1px);
+}
+.card-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #8a8a92;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+.card-title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #232324;
+  margin-bottom: 0.5rem;
+}
+.card-arrow {
+  font-weight: 400;
+  color: #8a8a92;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+.card:hover .card-arrow {
+  color: #232324;
+  transform: translateX(2px);
+}
+.card-body {
+  font-size: 0.95rem;
+  color: #50505a;
+  line-height: 1.55;
+}
+
+footer {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e5e5e8;
+  font-size: 0.8rem;
+  color: #8a8a92;
+  text-align: center;
+  line-height: 1.6;
+}
+footer a {
+  color: #50505a;
+  text-decoration: none;
+  border-bottom: 1px solid #d5d5dc;
+}
+footer a:hover {
+  color: #232324;
+  border-bottom-color: #232324;
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="title-block">
+    <p class="eyebrow">AbbVie Neuroscience</p>
+    <h1>Two views</h1>
+    <p class="lede">Outside-in research, built from SEC filings. Every number is tagged to its source.</p>
+  </div>
+
+  <div class="cards">
+
+    <a class="card" href="revenue.html">
+      <p class="card-eyebrow">Numbers</p>
+      <p class="card-title"><span>Revenue trajectory</span><span class="card-arrow">→</span></p>
+      <p class="card-body">Nine years of product-level neuroscience revenue, pre- and post-Allergan, drawn from 10-K and 10-Q iXBRL plus the Allergan earnings-release Botox Therapeutic split.</p>
+    </a>
+
+    <a class="card" href="story.html">
+      <p class="card-eyebrow">Picture</p>
+      <p class="card-title"><span>The portfolio</span><span class="card-arrow">→</span></p>
+      <p class="card-body">Commercial products and pipeline assets on one timeline, with the milestones that moved each row. Two acquisitions account for most of what's here.</p>
+    </a>
+
+  </div>
+
+  <footer>
+    Source data on <a href="https://www.sec.gov/edgar">SEC EDGAR</a>.
+  </footer>
+
+</div>
+</body>
+</html>
