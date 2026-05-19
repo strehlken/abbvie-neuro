@@ -1,0 +1,1676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AbbVie: Language Under Pressure</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='9' fill='none' stroke='%231f1a14' stroke-width='2.5'/%3E%3Cline x1='32' y1='23' x2='32' y2='9' stroke='%231f1a14' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='32' y1='41' x2='32' y2='55' stroke='%231f1a14' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='23' y1='32' x2='9' y2='32' stroke='%231f1a14' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='41' y1='32' x2='55' y2='32' stroke='%231f1a14' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Brandon Grotesque', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #232324;
+  background: #FBFAF7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* page = a centered text column with a sticky side nav on wide viewports */
+.layout {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 6rem;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 3rem;
+}
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; gap: 0; padding: 2.5rem 1.25rem 4rem; }
+}
+
+/* sticky side nav */
+nav.side {
+  position: sticky;
+  top: 2rem;
+  align-self: start;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+}
+nav.side .nav-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #8a8a92;
+  font-weight: 600;
+  margin-bottom: 0.85rem;
+}
+nav.side ol {
+  list-style: none;
+  border-left: 1px solid #e5e0d4;
+}
+nav.side li { padding: 0; }
+nav.side a {
+  display: block;
+  padding: 0.45rem 0.85rem;
+  color: #50505a;
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  margin-left: -1px;
+  transition: color 120ms, border-color 120ms;
+}
+nav.side a:hover { color: #232324; }
+nav.side a.active {
+  color: #1a1a1f;
+  border-left-color: #1a1a1f;
+  font-weight: 600;
+}
+nav.side a .num {
+  display: inline-block;
+  width: 1.6em;
+  color: #a8a497;
+  font-variant-numeric: tabular-nums;
+}
+nav.side a.active .num { color: #1a1a1f; }
+@media (max-width: 900px) {
+  nav.side { display: none; }
+}
+
+main { min-width: 0; max-width: 760px; }
+
+.title-block {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e5e0d4;
+}
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #8a8a92;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+h1 {
+  font-family: 'Brandon Grotesque', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 4.5vw, 2.875rem);
+  line-height: 1.05;
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+  color: #1a1a1f;
+  margin-bottom: 1rem;
+}
+.lede {
+  font-size: 1.05rem;
+  color: #4a4a52;
+  line-height: 1.5;
+  max-width: 60ch;
+}
+
+section { margin-bottom: 0; }
+.section-eyebrow {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #8a8a92;
+  font-weight: 600;
+  margin-top: 5rem;
+  margin-bottom: 0.75rem;
+}
+.section-eyebrow .num { color: #c0bdb0; margin-right: 0.55rem; }
+h2 {
+  font-family: 'Brandon Grotesque', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.015em;
+  color: #1a1a1f;
+  margin-bottom: 0.6rem;
+}
+h3 {
+  font-family: 'Brandon Grotesque', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #232324;
+  margin-top: 2.25rem;
+  margin-bottom: 0.55rem;
+}
+h4 {
+  font-family: 'Brandon Grotesque', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #4a4a52;
+  margin-top: 1.5rem;
+  margin-bottom: 0.4rem;
+}
+p { margin-bottom: 1rem; color: #232324; }
+p.muted { color: #50505a; font-size: 0.95rem; }
+p em { font-style: italic; }
+.section-lede {
+  font-size: 1rem;
+  color: #4a4a52;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  max-width: 60ch;
+}
+
+a { color: inherit; }
+
+/* confidence tags */
+.conf {
+  display: inline-block;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.12em 0.55em;
+  border-radius: 2px;
+  border: 1px solid currentColor;
+  vertical-align: 0.12em;
+  white-space: nowrap;
+  margin-right: 0.25rem;
+}
+.conf-direct      { color: #1d6e36; background: #eaf4ec; border-color: #c1ddc8; }
+.conf-inferred    { color: #9b6c1f; background: #fbf2dd; border-color: #ead9b3; }
+.conf-speculative { color: #a8554d; background: #fbf0ee; border-color: #e2bdb8; }
+
+/* year-block — one block per fiscal year in Section 1 */
+.year-block {
+  border-top: 1px solid #e5e0d4;
+  padding: 1.6rem 0 0.6rem;
+  margin-top: 0;
+}
+.year-block:first-of-type { border-top: 0; padding-top: 0.6rem; }
+.year-block header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 1rem;
+  margin-bottom: 0.5rem;
+}
+.year-block header h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+}
+.year-block header .meta {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8a8a92;
+  font-weight: 600;
+}
+.year-block .field {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 0.5rem 1rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.97rem;
+  line-height: 1.5;
+}
+.year-block .field .label {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8a8a92;
+  font-weight: 700;
+  padding-top: 0.18rem;
+}
+.year-block .field .value { color: #232324; }
+.year-block .field .value.dim { color: #6b6b72; font-style: italic; }
+
+/* evidence cards (collapsible) */
+details.evidence {
+  margin: 0.6rem 0 1.4rem;
+  border: 1px solid #ECE7DC;
+  background: #FFFFFF;
+  border-radius: 6px;
+  padding: 0;
+  font-size: 0.95rem;
+}
+details.evidence > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.55rem 0.85rem;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #6b6b72;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+details.evidence > summary::-webkit-details-marker { display: none; }
+details.evidence > summary::after {
+  content: "+";
+  font-size: 18px;
+  font-weight: 400;
+  color: #a8a497;
+}
+details.evidence[open] > summary::after { content: "−"; }
+details.evidence > summary:hover { color: #232324; }
+details.evidence .quotes {
+  padding: 0.4rem 0.85rem 1rem;
+  border-top: 1px solid #f0ece0;
+}
+details.evidence blockquote {
+  margin: 0.6rem 0 0.25rem;
+  padding-left: 0.85rem;
+  border-left: 2px solid #d6d2c4;
+  font-size: 0.96rem;
+  color: #232324;
+  line-height: 1.5;
+}
+details.evidence blockquote.para {
+  border-left-style: dashed;
+  color: #4a4a52;
+  font-style: italic;
+}
+details.evidence cite {
+  display: block;
+  margin-top: 0.25rem;
+  margin-bottom: 0.4rem;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #8a8a92;
+  font-style: normal;
+  font-weight: 600;
+}
+details.evidence cite a {
+  text-decoration: none;
+  border-bottom: 1px dotted #b8b8c0;
+  color: inherit;
+}
+details.evidence cite a:hover { border-bottom-style: solid; }
+
+/* concept evolution table */
+.evo-table-wrap {
+  margin: 1rem 0 1.5rem;
+  overflow-x: auto;
+  border: 1px solid #ECE7DC;
+  background: #FFFFFF;
+  border-radius: 6px;
+}
+table.evo {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.84rem;
+  line-height: 1.4;
+}
+table.evo th,
+table.evo td {
+  padding: 0.55rem 0.65rem;
+  vertical-align: top;
+  text-align: left;
+  border-bottom: 1px solid #f0ece0;
+  border-right: 1px solid #f4f1e5;
+}
+table.evo th:last-child,
+table.evo td:last-child { border-right: 0; }
+table.evo thead th {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #6b6b72;
+  background: #F3F1EC;
+  font-weight: 700;
+  border-bottom: 1px solid #e5e0d4;
+  white-space: nowrap;
+}
+table.evo tbody th {
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #1a1a1f;
+  font-weight: 700;
+  background: #FAF8F2;
+  min-width: 130px;
+  max-width: 160px;
+  white-space: normal;
+}
+table.evo td .cell-conf {
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  margin-right: 0.35rem;
+  vertical-align: 0.15em;
+}
+table.evo td .cell-conf.direct      { background: #1d6e36; }
+table.evo td .cell-conf.inferred    { background: #9b6c1f; }
+table.evo td .cell-conf.speculative { background: #a8554d; }
+table.evo td.not-addressed {
+  color: #b5b1a4;
+  font-style: italic;
+}
+table.evo tr.section-header th {
+  background: #1a1a1f;
+  color: #FBFAF7;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  padding: 0.45rem 0.65rem;
+}
+
+/* migration list */
+.migration-list { list-style: none; padding: 0; }
+.migration-list li {
+  border: 1px solid #ECE7DC;
+  background: #FFFFFF;
+  border-radius: 6px;
+  padding: 1rem 1.1rem;
+  margin-bottom: 0.85rem;
+}
+.migration-list .arc {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12.5px;
+  color: #4a4a52;
+  margin-bottom: 0.55rem;
+  letter-spacing: 0.01em;
+}
+.migration-list .arc strong { color: #1a1a1f; font-weight: 700; }
+.migration-list .arc .arrow { color: #b8b3a3; margin: 0 0.4em; }
+.migration-list .gloss { font-size: 0.95rem; color: #232324; margin: 0; }
+
+/* invariant cards */
+.invariant {
+  border: 1px solid #ECE7DC;
+  border-left: 4px solid #4d2680;
+  background: #FFFFFF;
+  border-radius: 6px;
+  padding: 1.25rem 1.4rem;
+  margin-bottom: 1.25rem;
+}
+.invariant.alt-2 { border-left-color: #1d6f8a; }
+.invariant.alt-3 { border-left-color: #b76b27; }
+.invariant.alt-4 { border-left-color: #2c6a40; }
+.invariant .inv-label {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #8a8a92;
+  margin-bottom: 0.3rem;
+}
+.invariant .inv-statement {
+  font-size: 1.08rem;
+  line-height: 1.4;
+  color: #1a1a1f;
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+}
+.invariant .inv-evidence {
+  font-size: 0.92rem;
+  color: #4a4a52;
+  margin-bottom: 0.55rem;
+}
+.invariant .inv-strain {
+  font-size: 0.9rem;
+  color: #6b6b72;
+  font-style: italic;
+}
+
+/* pressure mapping — two-column grid */
+.pressure-map { display: grid; gap: 0.6rem; }
+.pressure-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 0.5rem 1rem;
+  align-items: start;
+  padding: 0.9rem 1rem;
+  border: 1px solid #ECE7DC;
+  background: #FFFFFF;
+  border-radius: 6px;
+}
+.pressure-pair .lang {
+  font-size: 0.94rem;
+  color: #232324;
+  border-left: 2px solid #d6d2c4;
+  padding-left: 0.7rem;
+}
+.pressure-pair .lang em { font-style: italic; }
+.pressure-pair .lang .src {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #8a8a92;
+  font-weight: 600;
+}
+.pressure-pair .pressure-text {
+  font-size: 0.94rem;
+  color: #4a4a52;
+  line-height: 1.45;
+}
+.pressure-pair .pressure-text strong { color: #1a1a1f; }
+@media (max-width: 700px) {
+  .pressure-pair { grid-template-columns: 1fr; }
+}
+
+/* boilerplate classifier */
+.bp-grid {
+  display: grid;
+  gap: 0.7rem;
+}
+.bp-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem 1rem;
+  padding: 0.9rem 1.05rem;
+  border: 1px solid #ECE7DC;
+  background: #FFFFFF;
+  border-radius: 6px;
+  font-size: 0.94rem;
+  line-height: 1.45;
+}
+.bp-row .phrase {
+  font-style: italic;
+  color: #232324;
+}
+.bp-row .phrase em { color: #4d2680; font-style: italic; font-weight: 600; }
+.bp-row .bp-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.15em 0.55em;
+  border-radius: 2px;
+  white-space: nowrap;
+  align-self: start;
+  margin-top: 0.1rem;
+}
+.bp-tag.boilerplate { color: #6b6b72; background: #F3F1EC; }
+.bp-tag.meaningful  { color: #9b6c1f; background: #fbf2dd; }
+.bp-tag.high-signal { color: #1d6e36; background: #eaf4ec; }
+.bp-tag.event       { color: #1d6f8a; background: #e6eff4; }
+.bp-row .bp-rationale {
+  grid-column: 1 / -1;
+  font-size: 0.86rem;
+  color: #6b6b72;
+  margin-top: 0.35rem;
+  padding-top: 0.4rem;
+  border-top: 1px dashed #ece8df;
+}
+
+/* TA share-of-voice — text rows showing rhetorical primacy */
+.ta-rank {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: #4a4a52;
+  background: #FFFFFF;
+  border: 1px solid #ECE7DC;
+  border-radius: 6px;
+  padding: 1rem 1.1rem;
+}
+.ta-rank .ta-year {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 0.5rem;
+  border-bottom: 1px solid #f4f1e5;
+  padding: 0.3rem 0;
+}
+.ta-rank .ta-year:last-child { border-bottom: 0; }
+.ta-rank .ta-year .yr { color: #8a8a92; font-weight: 700; }
+.ta-rank .ta-year .seq strong { color: #1a1a1f; font-weight: 700; }
+
+/* synthesis closing */
+.synthesis {
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: #232324;
+}
+.synthesis p { margin-bottom: 1.1rem; }
+.synthesis p:last-child { margin-bottom: 0; }
+
+/* source manifest */
+.manifest-list {
+  list-style: none;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+  border-top: 1px solid #e5e0d4;
+}
+.manifest-list li {
+  display: grid;
+  grid-template-columns: 64px 80px 1fr;
+  gap: 0.5rem 1rem;
+  padding: 0.55rem 0.4rem;
+  border-bottom: 1px solid #f4f1e5;
+}
+.manifest-list .mid {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 0.78rem;
+  color: #8a8a92;
+  letter-spacing: 0.04em;
+}
+.manifest-list .mtype {
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #4a4a52;
+}
+.manifest-list .mtitle { color: #232324; }
+.manifest-list .mtitle small { color: #8a8a92; font-size: 0.85em; }
+
+/* footer */
+footer.coda {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e5e0d4;
+  font-size: 0.88rem;
+  color: #6b6b72;
+}
+footer.coda p { margin-bottom: 0.45rem; }
+footer.coda a {
+  color: #2a6cd8;
+  text-decoration: none;
+  border-bottom: 1px dotted #b3c8e8;
+}
+footer.coda a:hover { border-bottom-style: solid; }
+footer.coda code {
+  font-family: 'SF Mono', Monaco, Menlo, monospace;
+  font-size: 0.82em;
+  background: #F3F1EC;
+  padding: 0.12em 0.45em;
+  border-radius: 4px;
+}
+
+/* small legend block at top of page */
+.conf-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.25rem;
+  margin: 1.25rem 0 0;
+  font-size: 12px;
+  color: #6b6b72;
+}
+.conf-legend .li { display: inline-flex; align-items: center; gap: 0.4rem; }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+<nav class="side" aria-label="Section navigation">
+  <div class="nav-eyebrow">Sections</div>
+  <ol id="toc">
+    <li><a href="#timeline"><span class="num">01</span>Narrative timeline</a></li>
+    <li><a href="#migration"><span class="num">02</span>Concept migration</a></li>
+    <li><a href="#evolution"><span class="num">03</span>Concept evolution</a></li>
+    <li><a href="#invariants"><span class="num">04</span>Invariants</a></li>
+    <li><a href="#pressure"><span class="num">05</span>Pressure mapping</a></li>
+    <li><a href="#boilerplate"><span class="num">06</span>Signal vs boilerplate</a></li>
+    <li><a href="#ta-drift"><span class="num">07</span>TA drift &amp; neuroscience</a></li>
+    <li><a href="#compensation"><span class="num">08</span>Compensation</a></li>
+    <li><a href="#synthesis"><span class="num">09</span>Synthesis</a></li>
+    <li><a href="#manifest"><span class="num">10</span>Source manifest</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<header class="title-block">
+  <div class="eyebrow">AbbVie · corporate language under pressure · FY2018–FY2025</div>
+  <h1>Language under pressure</h1>
+  <p class="lede">A reading of AbbVie's EDGAR self-portraits as a constrained adaptive response to patent cliffs, acquisitions, and regulatory pricing. Corporate filings are not boilerplate and not confession — they are strategic self-portraits produced under pressure. The signal is in the migration, repetition, and reweighting of concepts across years, not in any single phrase.</p>
+  <div class="conf-legend" aria-label="Confidence legend">
+    <span class="li"><span class="conf conf-direct">Direct</span> exact quote from corpus</span>
+    <span class="li"><span class="conf conf-inferred">Inferred</span> reading supported by quoted evidence</span>
+    <span class="li"><span class="conf conf-speculative">Speculative</span> hypothesis not directly evidenced</span>
+  </div>
+</header>
+
+
+<!-- ────────────────────────────────────────────────────────────────────── -->
+<!-- 01 — Narrative timeline                                                 -->
+<!-- ────────────────────────────────────────────────────────────────────── -->
+<section id="timeline">
+  <div class="section-eyebrow"><span class="num">01</span>Narrative timeline</div>
+  <h2>What AbbVie said it was, year by year</h2>
+  <p class="section-lede">One block per fiscal year. Each lists the dominant self-description in Item 7's "Strategic Objectives" section, the dominant external pressure, and a flagged language shift versus the prior year. Quotes are the verbatim opening of each year's Strategic Objectives clause — the page in every 10-K where AbbVie tells the market what it is.</p>
+
+  <article class="year-block" id="y-2018">
+    <header>
+      <h3>FY2018</h3>
+      <div class="meta">10-K filed Feb 2019 · Humira 61% of revenue · Allergan not yet announced</div>
+    </header>
+    <div class="field">
+      <div class="label">Self-desc.</div>
+      <div class="value">An <em>innovation-driven, patient-focused specialty biopharmaceutical company</em> whose mission is &ldquo;a consistent stream of innovative new medicines.&rdquo; Pipeline focus listed as &ldquo;immunology, oncology and neuroscience, with additional targeted investment in cystic fibrosis and women's health.&rdquo; <span class="conf conf-direct">Direct</span></div>
+    </div>
+    <div class="field">
+      <div class="label">Pressure</div>
+      <div class="value">Imminent Humira biosimilar entry in Europe (October 2018) at a moment when Humira is 61% of revenue. AbbVie acknowledges &ldquo;direct biosimilar competition in Europe and other countries, which represent approximately 75% of AbbVie's international HUMIRA business.&rdquo; <span class="conf conf-direct">Direct</span></div>
+    </div>
+    <div class="field">
+      <div class="label">Shift</div>
+      <div class="value dim">Baseline year; no prior-year comparison.</div>
+    </div>
+    <details class="evidence">
+      <summary>Evidence · 3 verbatim quotes</summary>
+      <div class="quotes">
+        <blockquote>&ldquo;AbbVie's mission is to be an innovation-driven, patient-focused specialty biopharmaceutical company capable of achieving top-tier financial performance through outstanding execution and a consistent stream of innovative new medicines.&rdquo;</blockquote>
+        <cite>(2018, 10-K, Item 7 &mdash; 2019 Strategic Objectives) <a href="#m01">[M01]</a></cite>
+        <blockquote>&ldquo;HUMIRA&hellip; accounted for approximately 61% of AbbVie's total net revenues in 2018.&rdquo;</blockquote>
+        <cite>(2018, 10-K, Item 1 &mdash; Products / Humira) <a href="#m01">[M01]</a></cite>
+        <blockquote>&ldquo;HUMIRA is now facing direct biosimilar competition in Europe and other countries, which represent approximately 75% of AbbVie's international HUMIRA business or approximately 25% of total global HUMIRA revenues.&rdquo;</blockquote>
+        <cite>(2018, 10-K, Item 1 &mdash; Competition / Biosimilars) <a href="#m01">[M01]</a></cite>
+      </div>
+    </details>
+  </article>
+
+  <article class="year-block" id="y-2019">
+    <header>
+      <h3>FY2019</h3>
+      <div class="meta">10-K filed Feb 2020 · Humira ~58% of revenue · Allergan deal announced June 2019, pending close</div>
+    </header>
+    <div class="field">
+      <div class="label">Self-desc.</div>
+      <div class="value">Mission statement is verbatim identical to FY2018. The Strategic Objectives list adds a new top bullet: &ldquo;Completion and successful integration of the proposed Allergan acquisition.&rdquo; <span class="conf conf-direct">Direct</span></div>
+    </div>
+    <div class="field">
+      <div class="label">Pressure</div>
+      <div class="value">$63B Allergan transaction announced. Two new framings arrive in the same Item 7: (a) &ldquo;reducing incremental debt&rdquo; replaces &ldquo;share repurchases&rdquo; in capital-allocation language; (b) a forward-looking sentence describing the post-close portfolio: &ldquo;diverse entity with leadership positions across immunology, hematologic oncology, aesthetics, neuroscience, women's health, eye care and virology.&rdquo; <span class="conf conf-direct">Direct</span></div>
+    </div>
+    <div class="field">
+      <div class="label">Shift</div>
+      <div class="value">Capital-allocation goal silently rewritten: &ldquo;via dividends and share repurchases&rdquo; (FY2018) → &ldquo;via a strong and growing dividend while also reducing incremental debt&rdquo; (FY2019). Buybacks vanish; deleveraging arrives. <span class="conf conf-inferred">Inferred</span> from before/after texts of the same sentence in consecutive Item 7s.</div>
+    </div>
+    <details class="evidence">
+      <summary>Evidence · 3 verbatim quotes</summary>
+      <div class="quotes">
+        <blockquote>&ldquo;returning cash to shareholders via a strong and growing dividend while also reducing incremental debt.&rdquo;</blockquote>
+        <cite>(2019, 10-K, Item 7 &mdash; 2020 Strategic Objectives) <a href="#m02">[M02]</a></cite>
+        <blockquote>&ldquo;The combination of AbbVie and Allergan will create a diverse entity with leadership positions across immunology, hematologic oncology, aesthetics, neuroscience, women's health, eye care and virology.&rdquo;</blockquote>
+        <cite>(2019, 10-K, Item 7 &mdash; 2020 Strategic Objectives) <a href="#m02">[M02]</a></cite>
+        <blockquote>&ldquo;Completion and successful integration of the proposed Allergan acquisition.&rdquo;</blockquote>
+        <cite>(2019, 10-K, Item 7 &mdash; 2020 Strategic Objectives bullet 1) <a href="#m02">[M02]</a></cite>
+      </div>
+    </details>
+  </article>
+
+  <article class="year-block" id="y-2020">
+    <header>
+      <h3>FY2020</h3>
+      <div class="meta">10-K filed Feb 2021 · Allergan closed 8 May 2020 · Humira ~43% of revenue</div>
+    </header>
+    <div class="field">
+      <div class="label">Self-desc.</div>
+      <div class="value">Mission rewritten. The 2018-2019 mission (&ldquo;innovation-driven, patient-focused specialty biopharmaceutical company&hellip;consistent stream of innovative new medicines&rdquo;) is replaced by: &ldquo;discover and develop innovative medicines and products that solve serious health issues today and address the medical challenges of tomorrow.&rdquo; The TA list expands from three (immunology, oncology, neuroscience) to six (adds aesthetics, eye care, women's health). <span class="conf conf-direct">Direct</span></div>
+    </div>
+    <div class="field">
+      <div class="label">Pressure</div>
+      <div class="value">$63B acquisition closed mid-pandemic; integration cost target of <em>&ldquo;more than $2 billion of expected annual cost synergies over a three-year period.&rdquo;</em> First explicit COVID section in MD&amp;A. <span class="conf conf-direct">Direct</span></div>
+    </div>
+    <div class="field">
+      <div class="label">Shift</div>
+      <div class="value">&ldquo;Diversified revenue base with multiple long-term growth drivers&rdquo; appears for the first time as bullet (i) of Strategic Objectives. This phrase will persist verbatim through every subsequent 10-K (FY2020 → FY2025) — six years and counting. <span class="conf conf-direct">Direct</span></div>
+    </div>
+    <details class="evidence">
+      <summary>Evidence · 3 verbatim quotes</summary>
+      <div class="quotes">
+        <blockquote>&ldquo;AbbVie's mission is to discover and develop innovative medicines and products that solve serious health issues today and address the medical challenges of tomorrow while achieving top-tier financial performance through outstanding execution.&rdquo;</blockquote>
+        <cite>(2020, 10-K, Item 7 &mdash; 2021 Strategic Objectives) <a href="#m03">[M03]</a></cite>
+        <blockquote>&ldquo;maximizing the benefits of the Allergan acquisition to create a more diversified revenue base with multiple long-term growth drivers&rdquo;</blockquote>
+        <cite>(2020, 10-K, Item 7 &mdash; 2021 Strategic Objectives, bullet i) <a href="#m03">[M03]</a></cite>
+        <blockquote>&ldquo;The integration plan is expected to realize more than $2 billion of expected annual cost synergies over a three-year period, with approximately 50% realized in R&amp;D, 40% in selling, general and administrative (SG&amp;A) and 10% in cost of products sold.&rdquo;</blockquote>
+        <cite>(2020, 10-K, Item 7 &mdash; 2020 Financial Results) <a href="#m03">[M03]</a></cite>
+      </div>
+    </details>
+  </article>
+
+  <article class="year-block" id="y-2021">
+    <header>
+      <h3>FY2021</h3>
+      <div class="meta">10-K filed Feb 2022 · Humira 37% · Skyrizi/Rinvoq scaling · pre-Humira-US-LOE</div>
+    </header>
+    <div class="field">
+      <div class="label">Self-desc.</div>
+      <div class="value">First year &ldquo;Neuroscience revenue growth driven by Vraylar, Botox Therapeutic, Ubrelvy and recently launched Qulipta&rdquo; appears as its own Strategic Objectives bullet. Neuroscience moves from pipeline aspiration (2018-2019) to enumerated commercial line item (2021). <span class="conf conf-direct">Direct</span></div>
+    </div>
+    <div class="field">
+      <div class="label">Pressure</div>
+      <div class="value">U.S. Humira LOE is now 12 months away. Risk factors are explicit: &ldquo;Humira accounted for approximately 37% of AbbVie's total net revenues in 2021. Any significant event that adversely affects Humira's revenues could have a material adverse impact on AbbVie's results of operations and cash flows.&rdquo; <span class="conf conf-direct">Direct</span></div>
+    </div>
+    <div class="field">
+      <div class="label">Shift</div>
+      <div class="value">&ldquo;Allergan acquisition&rdquo; language quiets. The FY2020 phrasing &ldquo;maximizing the benefits <em>of the Allergan acquisition</em>&rdquo; becomes the more generic &ldquo;maximizing the benefits <em>of a diversified revenue base</em>&rdquo; — Allergan's name slides out of the strategic-objectives clause once integration is described as essentially complete. <span class="conf conf-inferred">Inferred</span></div>
+    </div>
+    <details class="evidence">
+      <summary>Evidence · 3 verbatim quotes</summary>
+      <div class="quotes">
+        <blockquote>&ldquo;maximizing the benefits of a diversified revenue base with multiple long-term growth drivers&rdquo;</blockquote>
+        <cite>(2021, 10-K, Item 7 &mdash; 2022 Strategic Objectives, bullet i) <a href="#m04">[M04]</a></cite>
+        <blockquote>&ldquo;Neuroscience revenue growth driven by Vraylar, Botox Therapeutic, Ubrelvy and recently launched Qulipta.&rdquo;</blockquote>
+        <cite>(2021, 10-K, Item 7 &mdash; 2022 Strategic Objectives bullet) <a href="#m04">[M04]</a></cite>
+        <blockquote>&ldquo;Humira accounted for approximately 37% of AbbVie's total net revenues in 2021. Any significant event that adversely affects Humira's revenues could have a material adverse impact on AbbVie's results of operations and cash flows.&rdquo;</blockquote>
+        <cite>(2021, 10-K, Item 1A &mdash; Risk Factors) <a href="#m04">[M04]</a></cite>
+      </div>
+    </details>
+  </article>
+
+  <article class="year-block" id="y-2022">
+    <header>
+      <h3>FY2022</h3>
+      <div class="meta">10-K filed Feb 2023 · Humira US biosimilar entry begins Jan 2023 · Skyrizi/Rinvoq scaling</div>
+    </header>
+    <div class="field">
+      <div class="label">Self-desc.</div>
+      <div class="value">Company Overview is rewritten into a single dense sentence: &ldquo;global, diversified research-based biopharmaceutical company positioned for success with a comprehensive product portfolio that has leadership positions across immunology, oncology, aesthetics, neuroscience and eye care.&rdquo; The Humira-era &ldquo;research-based&rdquo; descriptor is preserved but now followed by &ldquo;diversified&rdquo; and a five-TA list. <span class="conf conf-direct">Direct</span></div>
+    </div>
+    <div class="field">
+      <div class="label">Pressure</div>
+      <div class="value">U.S. Humira loss of exclusivity formally beginning. Strategic objective bullet &ldquo;Effectively managing the impact of Humira biosimilar erosion&rdquo; appears for the first time alongside (not before) the growth-product bullets. <span class="conf conf-direct">Direct</span></div>
+    </div>
+    <div class="field">
+      <div class="label">Shift</div>
+      <div class="value">The decisive change happens not in the 10-K but in the proxy filed three months later: AbbVie introduces &ldquo;Platform Revenue&rdquo; — net revenues <em>less Humira sales</em> — as a new annual-incentive performance metric, &ldquo;to inform our focus as we navigate the Humira loss of exclusivity period.&rdquo; Humira is surgically removed from how executives are paid. See <a href="#compensation">Section 08</a>. <span class="conf conf-direct">Direct</span></div>
+    </div>
+    <details class="evidence">
+      <summary>Evidence · 3 verbatim quotes</summary>
+      <div class="quotes">
+        <blockquote>&ldquo;AbbVie is a global, diversified research-based biopharmaceutical company positioned for success with a comprehensive product portfolio that has leadership positions across immunology, oncology, aesthetics, neuroscience and eye care.&rdquo;</blockquote>
+        <cite>(2022, 10-K, Item 7 &mdash; Company Overview) <a href="#m05">[M05]</a></cite>
+        <blockquote>&ldquo;Effectively managing the impact of Humira biosimilar erosion.&rdquo;</blockquote>
+        <cite>(2022, 10-K, Item 7 &mdash; 2023 Strategic Objectives, bullet) <a href="#m05">[M05]</a></cite>
+        <blockquote>&ldquo;Platform Revenue is a non-GAAP metric comprised of net revenues less total Humira sales and adjusted for foreign exchange&hellip;We expect this metric to inform our focus as we navigate the Humira loss of exclusivity period and eventual return to growth.&rdquo;</blockquote>
+        <cite>(2023, DEF14A, CD&amp;A &mdash; Short-Term Incentive Performance Measures, footnote 3) <a href="#m12">[M12]</a></cite>
+      </div>
+    </details>
+  </article>
+
+  <article class="year-block" id="y-2023">
+    <header>
+      <h3>FY2023</h3>
+      <div class="meta">10-K filed Feb 2024 · Humira 27% · ImmunoGen / Cerevel announced · IRA debuts in MD&amp;A</div>
+    </header>
+    <div class="field">
+      <div class="label">Self-desc.</div>
+      <div class="value">Company Overview unchanged from FY2022. The strategic-objectives bullet list adds: &ldquo;Successful integration of the ImmunoGen, Inc. and proposed Cerevel Therapeutics acquisitions.&rdquo; Two new deals are pending, one of them (Cerevel, $8.7B) explicitly framed as a neuroscience pipeline thesis. <span class="conf conf-direct">Direct</span></div>
+    </div>
+    <div class="field">
+      <div class="label">Pressure</div>
+      <div class="value">First explicit IRA / Medicare-negotiation paragraph in Item 7: &ldquo;Imbruvica was selected as one of the first 10 medicines subject to government-set prices beginning in 2026.&rdquo; Humira biosimilars now in market; Humira revenue down sharply, driving total net revenues to $54.3B (-6%). <span class="conf conf-direct">Direct</span></div>
+    </div>
+    <div class="field">
+      <div class="label">Shift</div>
+      <div class="value">Capital-allocation tail of bullet (iv) shifts again — from FY2022's &ldquo;while also reducing debt&rdquo; to FY2023's &ldquo;while also continuing to repay debt.&rdquo; The verb form &ldquo;continuing to repay&rdquo; encodes the new normal: leverage management is now ongoing, not a one-time post-deal stance. <span class="conf conf-inferred">Inferred</span></div>
+    </div>
+    <details class="evidence">
+      <summary>Evidence · 3 verbatim quotes</summary>
+      <div class="quotes">
+        <blockquote>&ldquo;Successful integration of the ImmunoGen, Inc. and proposed Cerevel Therapeutics acquisitions.&rdquo;</blockquote>
+        <cite>(2023, 10-K, Item 7 &mdash; 2024 Strategic Objectives, bullet) <a href="#m06">[M06]</a></cite>
+        <blockquote>&ldquo;In 2023, Imbruvica was selected as one of the first 10 medicines subject to government-set prices beginning in 2026.&rdquo;</blockquote>
+        <cite>(2023, 10-K, Item 7 &mdash; Regulation) <a href="#m06">[M06]</a></cite>
+        <blockquote>&ldquo;Humira accounted for approximately 27% of AbbVie's total net revenues in 2023. Humira is facing competition from biosimilar products in the United States following the loss of exclusivity in 2023, which AbbVie anticipates will continue to cause a significant decline in Humira's revenue&hellip;&rdquo;</blockquote>
+        <cite>(2023, 10-K, Item 1A &mdash; Risk Factors) <a href="#m06">[M06]</a></cite>
+      </div>
+    </details>
+  </article>
+
+  <article class="year-block" id="y-2024">
+    <header>
+      <h3>FY2024</h3>
+      <div class="meta">10-K filed Feb 2025 · ImmunoGen closed Feb 2024 · Cerevel closed Aug 2024 · CEO transition July 2024 · emraclidine failed Nov 2024</div>
+    </header>
+    <div class="field">
+      <div class="label">Self-desc.</div>
+      <div class="value">Company Overview unchanged from FY2022-FY2023. Two acquisitions close, then emraclidine — the headline Cerevel asset — fails its Phase 2 schizophrenia monotherapy trials in November 2024, triggering a $4.5B intangible asset impairment. The strategic-objectives section names Cerevel only obliquely (&ldquo;Maximizing the value of key acquisitions&rdquo;). <span class="conf conf-direct">Direct</span></div>
+    </div>
+    <div class="field">
+      <div class="label">Pressure</div>
+      <div class="value">Three simultaneous shocks: $9.7B in deal-close cash outflow (ImmunoGen + Cerevel); CEO transition from Richard Gonzalez (founding CEO, 2013) to Robert Michael, July 2024; emraclidine impairment of $4.5B in November. Also: &ldquo;In January 2025, HHS&hellip;selected Vraylar and Linzess as two of the 15 medicines subject to government-set prices beginning in 2027&rdquo; — IRA now reaches AbbVie's neuroscience franchise. <span class="conf conf-direct">Direct</span></div>
+    </div>
+    <div class="field">
+      <div class="label">Shift</div>
+      <div class="value">The risk-factor concentration sentence rewrites: instead of naming Humira alone, it now reads &ldquo;Skyrizi, Humira and Rinvoq each represented greater than 10% of AbbVie's total net revenues and, in aggregate, these products accounted for approximately 47% of total net revenues in 2024.&rdquo; The successors are now in the sentence. <span class="conf conf-direct">Direct</span></div>
+    </div>
+    <details class="evidence">
+      <summary>Evidence · 4 verbatim quotes</summary>
+      <div class="quotes">
+        <blockquote>&ldquo;On August 1, 2024, AbbVie completed the acquisition of Cerevel Therapeutics Holdings, Inc. (Cerevel Therapeutics). The acquisition complements AbbVie's neuroscience portfolio, adding a wide range of potentially best-in-class assets that may transform standards of care across psychiatric and neurological disorders where significant unmet needs remain for patients.&rdquo;</blockquote>
+        <cite>(2024, 10-K, Item 7 &mdash; Company Overview) <a href="#m07">[M07]</a></cite>
+        <blockquote>&ldquo;In November 2024, AbbVie announced that its two Phase 2 EMPOWER trials investigating emraclidine&hellip;did not meet their primary endpoint of showing a statistically significant reduction (improvement) in the change from baseline in the Positive and Negative Syndrome Scale total score compared to the placebo group at week 6.&rdquo;</blockquote>
+        <cite>(2024, 10-K, Item 7 &mdash; Significant Programs / Neuroscience) <a href="#m07">[M07]</a></cite>
+        <blockquote>&ldquo;A significant portion of AbbVie's revenues and operating earnings are derived from several major products. Specifically, Skyrizi, Humira and Rinvoq each represented greater than 10% of AbbVie's total net revenues and, in aggregate, these products accounted for approximately 47% of total net revenues in 2024.&rdquo;</blockquote>
+        <cite>(2024, 10-K, Item 1A &mdash; Risk Factors / product concentration) <a href="#m07">[M07]</a></cite>
+        <blockquote>&ldquo;On July 1, 2024, Robert A. Michael, AbbVie's then President and Chief Operating Officer, succeeded Richard A. Gonzalez as the company's Chief Executive Officer (CEO). Mr. Gonzalez, who has served as CEO since the company's formation in 2013, retired from the role of CEO and became Executive Chairman&hellip;&rdquo;</blockquote>
+        <cite>(2024, 10-K, Item 7 &mdash; Company Overview) <a href="#m07">[M07]</a></cite>
+      </div>
+    </details>
+  </article>
+
+  <article class="year-block" id="y-2025">
+    <header>
+      <h3>FY2025</h3>
+      <div class="meta">10-K filed Feb 2026 · Skyrizi + Rinvoq 42% of revenue · Humira drops out of top 10% list · Botox selected for Medicare price-setting</div>
+    </header>
+    <div class="field">
+      <div class="label">Self-desc.</div>
+      <div class="value">Company Overview is rewritten, reordering the therapeutic-area list for the first time since FY2022: <em>&ldquo;leadership positions across immunology, neuroscience, oncology and aesthetics&rdquo;</em> — neuroscience moves from fourth to second; eye care drops out entirely. The pipeline-focus list adds &ldquo;new sources of growth such as obesity.&rdquo; The capital-allocation tail shifts again, from &ldquo;continuing to repay debt&rdquo; to &ldquo;maintaining a strong investment grade credit rating.&rdquo; <span class="conf conf-direct">Direct</span></div>
+    </div>
+    <div class="field">
+      <div class="label">Pressure</div>
+      <div class="value">Three Vraylar-relevant policy shocks: (a) Vraylar selected for Medicare price-setting beginning 2027; (b) Botox selected beginning 2028; (c) a voluntary agreement with the U.S. government, &ldquo;pledged $100 billion in U.S.-based research and development and capital investments&hellip;over the next decade. Under this voluntary agreement, the U.S. government has agreed to provide AbbVie a three-year exemption from tariffs and future price mandates.&rdquo; <span class="conf conf-direct">Direct</span></div>
+    </div>
+    <div class="field">
+      <div class="label">Shift</div>
+      <div class="value">The risk-factor concentration sentence completes the inversion: Humira is no longer named. &ldquo;Skyrizi and Rinvoq each represented greater than 10% of AbbVie's total net revenues and, in aggregate, these products accounted for approximately 42% of total net revenues in 2025.&rdquo; The eight-year arc — Humira 61% → 0% over 10% — closes inside a single sentence template. <span class="conf conf-direct">Direct</span></div>
+    </div>
+    <details class="evidence">
+      <summary>Evidence · 4 verbatim quotes</summary>
+      <div class="quotes">
+        <blockquote>&ldquo;AbbVie is a global, diversified research-based biopharmaceutical company positioned for success with a comprehensive product portfolio that has leadership positions across immunology, neuroscience, oncology and aesthetics.&rdquo;</blockquote>
+        <cite>(2025, 10-K, Item 7 &mdash; Company Overview) <a href="#m08">[M08]</a></cite>
+        <blockquote>&ldquo;A significant portion of AbbVie's revenues and operating earnings are derived from two major products. Specifically, Skyrizi and Rinvoq each represented greater than 10% of AbbVie's total net revenues and, in aggregate, these products accounted for approximately 42% of total net revenues in 2025.&rdquo;</blockquote>
+        <cite>(2025, 10-K, Item 1A &mdash; Risk Factors / product concentration) <a href="#m08">[M08]</a></cite>
+        <blockquote>&ldquo;Subsequent to December 31, 2025, AbbVie announced a voluntary agreement with the U.S. government to further advance access and affordability of AbbVie's products in the U.S. while protecting and investing in U.S. pharmaceutical innovation&hellip;AbbVie pledged $100 billion in U.S.-based research and development and capital investments&hellip;Under this voluntary agreement, the U.S. government has agreed to provide AbbVie a three-year exemption from tariffs and future price mandates.&rdquo;</blockquote>
+        <cite>(2025, 10-K, Item 7 &mdash; Recent Events / Regulatory Environment) <a href="#m08">[M08]</a></cite>
+        <blockquote>&ldquo;In January 2026, Botox was selected as one of 15 medicines subject to government-set prices in Medicare Parts B and D beginning in 2028.&rdquo;</blockquote>
+        <cite>(2025, 10-K, Item 7 &mdash; Regulation) <a href="#m08">[M08]</a></cite>
+      </div>
+    </details>
+  </article>
+</section>
+
+
+<!-- ────────────────────────────────────────────────────────────────────── -->
+<!-- 02 — Concept migration                                                  -->
+<!-- ────────────────────────────────────────────────────────────────────── -->
+<section id="migration">
+  <div class="section-eyebrow"><span class="num">02</span>Concept migration</div>
+  <h2>Where a phrase lives tells you what it does</h2>
+  <p class="section-lede">Migration between filing locations is signal. A concept that starts as a defensive risk-factor caveat and ends up as a Strategic Objective bullet — or as a comp metric — has been institutionalized. The arcs below are restricted to migrations the corpus actually supports.</p>
+
+  <ul class="migration-list">
+
+    <li>
+      <div class="arc"><strong>&ldquo;reducing debt&rdquo;</strong> <span class="arrow">→</span> Item 1A risk-factor backdrop (Allergan acquisition) <span class="arrow">→</span> Item 7 Strategic Objectives capital-allocation bullet <span class="arrow">→</span> CD&amp;A performance-metric rationale</div>
+      <p class="gloss"><span class="conf conf-inferred">Inferred</span> Pre-Allergan, capital allocation language was &ldquo;dividends and share repurchases&rdquo; (FY2018, Item 7). The FY2019 Item 7 silently replaces this with &ldquo;reducing incremental debt.&rdquo; By the 2021 proxy, the FY2020 LTI design has been rewritten to &ldquo;replace[d] the relative return on equity (ROE) metric with a relative ROIC metric in order to place more emphasis on debt management and debt reduction, particularly in the context of the Allergan acquisition.&rdquo; Same idea, three locations, increasing institutionalization. <a href="#m13">[M13]</a></p>
+    </li>
+
+    <li>
+      <div class="arc"><strong>&ldquo;diversified revenue base&rdquo;</strong> <span class="arrow">→</span> Allergan deal rationale (FY2019 Item 7 forward-looking) <span class="arrow">→</span> Strategic Objectives bullet (i), FY2020 onward <span class="arrow">→</span> AIP performance-metric naming (&ldquo;Platform Revenue&rdquo;, 2022 proxy)</div>
+      <p class="gloss"><span class="conf conf-direct">Direct</span> The phrase first appears in FY2019 as a forward-looking promise about the post-close company. It moves to bullet (i) of Strategic Objectives in FY2020 and stays there verbatim through FY2025. In 2022 the underlying idea is encoded into a non-GAAP metric — &ldquo;net revenues less Humira sales&rdquo; — that explicitly governs annual incentive payouts. Aspirational claim → strategic objective → pay rule.</p>
+    </li>
+
+    <li>
+      <div class="arc"><strong>Neuroscience</strong> <span class="arrow">→</span> Item 1 pipeline-focus list, position 3 (FY2018) <span class="arrow">→</span> Item 7 Strategic Objectives commercial-growth bullet (FY2021) <span class="arrow">→</span> Item 7 Company Overview TA list, position 2 (FY2025)</div>
+      <p class="gloss"><span class="conf conf-direct">Direct</span> In the FY2018 10-K, neuroscience is one of three pipeline focus areas alongside immunology and oncology — purely R&amp;D framing, no on-market detail. In FY2021, post-Allergan, neuroscience is reframed as a commercial-growth bullet enumerating Vraylar, Botox Therapeutic, Ubrelvy, Qulipta. By FY2025, the Company Overview itself reorders the TA list to put neuroscience second, ahead of oncology and aesthetics. This is the rare migration that <em>elevates</em> within hierarchy, not just relocates.</p>
+    </li>
+
+    <li>
+      <div class="arc"><strong>Humira loss of exclusivity</strong> <span class="arrow">→</span> Item 1 Competition / Biosimilars (FY2018) <span class="arrow">→</span> Item 1A named risk factor (FY2019–FY2022) <span class="arrow">→</span> Item 7 Strategic Objectives bullet &ldquo;Effectively managing the impact&rdquo; (FY2022) <span class="arrow">→</span> CD&amp;A Platform Revenue definition (2023 proxy onward) <span class="arrow">→</span> dropped from FY2025 risk-factor sentence</div>
+      <p class="gloss"><span class="conf conf-direct">Direct</span> The arc bends back on itself. Biosimilar competition starts as defensive language in Item 1, becomes a top-tier risk factor as US LOE approaches, gets named as a Strategic Objective once the cliff is here, gets engineered out of incentive math via Platform Revenue, and by FY2025 the named-product-concentration risk sentence no longer mentions Humira at all — only Skyrizi and Rinvoq. The concept doesn't disappear; the framing of <em>what</em> AbbVie depends on does.</p>
+    </li>
+
+    <li>
+      <div class="arc"><strong>Inflation Reduction Act</strong> <span class="arrow">→</span> not addressed (FY2022 Item 7) <span class="arrow">→</span> first appears as a Regulation paragraph in Item 7 (FY2023) <span class="arrow">→</span> the &ldquo;voluntary agreement&rdquo; with U.S. government framing (FY2025 Item 7 Recent Events)</div>
+      <p class="gloss"><span class="conf conf-direct">Direct</span> The 2022 Inflation Reduction Act is not addressed in the FY2022 10-K Item 7 Strategic Objectives. It debuts in FY2023 once Imbruvica is named in the first batch of Medicare-negotiation products. By FY2025 the response has migrated from passive disclosure to active stance: a $100B U.S. investment pledge in exchange for &ldquo;a three-year exemption from tariffs and future price mandates.&rdquo; Disclosure → policy posture.</p>
+    </li>
+
+  </ul>
+</section>
+
+
+<!-- ────────────────────────────────────────────────────────────────────── -->
+<!-- 03 — Concept evolution table                                           -->
+<!-- ────────────────────────────────────────────────────────────────────── -->
+<section id="evolution">
+  <div class="section-eyebrow"><span class="num">03</span>Concept evolution</div>
+  <h2>The same concepts, year by year</h2>
+  <p class="section-lede">Rows are concepts the spec asks me to track. Cells are short phrases describing how the concept appears that year, with a confidence dot. &ldquo;Not addressed&rdquo; means the concept does not appear in that year's strategic-objectives / overview / risk-factor language — not that AbbVie is silent about it everywhere. Hover the dots: <span style="font-size:0.85em; color:#6b6b72;">green = direct quote backing, amber = inferred, red = speculative.</span></p>
+
+  <div class="evo-table-wrap">
+    <table class="evo">
+      <thead>
+        <tr>
+          <th>Concept</th>
+          <th>FY18</th>
+          <th>FY19</th>
+          <th>FY20</th>
+          <th>FY21</th>
+          <th>FY22</th>
+          <th>FY23</th>
+          <th>FY24</th>
+          <th>FY25</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr class="section-header"><th colspan="9">Humira and succession</th></tr>
+
+        <tr>
+          <th>Humira concentration</th>
+          <td><span class="cell-conf direct"></span>61% of revenue</td>
+          <td><span class="cell-conf direct"></span>58%</td>
+          <td><span class="cell-conf direct"></span>43% (Allergan dilution)</td>
+          <td><span class="cell-conf direct"></span>37%</td>
+          <td><span class="cell-conf direct"></span>37%; "anticipates significant decline"</td>
+          <td><span class="cell-conf direct"></span>27%; LOE in market</td>
+          <td><span class="cell-conf direct"></span>one of three &gt;10% products</td>
+          <td><span class="cell-conf direct"></span>dropped from &gt;10% list</td>
+        </tr>
+
+        <tr>
+          <th>Biosimilar erosion (actual vs framing)</th>
+          <td><span class="cell-conf direct"></span>EU competition active</td>
+          <td><span class="cell-conf direct"></span>"effective management of HUMIRA international biosimilar erosion" — bullet</td>
+          <td><span class="cell-conf direct"></span>same bullet, deprioritized</td>
+          <td><span class="cell-conf direct"></span>continued bullet</td>
+          <td><span class="cell-conf direct"></span>US entry begins; new bullet "Effectively managing the impact"</td>
+          <td><span class="cell-conf direct"></span>"will continue to cause significant decline"</td>
+          <td><span class="cell-conf direct"></span>integrated into product-concentration sentence</td>
+          <td><span class="cell-conf direct"></span>no longer the load-bearing risk; "Continuing to effectively manage" dropped from FY25 bullets</td>
+        </tr>
+
+        <tr>
+          <th>Skyrizi / Rinvoq succession</th>
+          <td class="not-addressed">not addressed</td>
+          <td><span class="cell-conf direct"></span>"newly launched immunology assets"</td>
+          <td><span class="cell-conf direct"></span>"growth in the immunology portfolio from Skyrizi, Rinvoq"</td>
+          <td><span class="cell-conf direct"></span>own Strategic Objectives bullet</td>
+          <td><span class="cell-conf direct"></span>"increasing market share and indication expansion"</td>
+          <td><span class="cell-conf direct"></span>bullet i: "Skyrizi and Rinvoq revenue growth"</td>
+          <td><span class="cell-conf direct"></span>both named in top-3 of &gt;10% products</td>
+          <td><span class="cell-conf direct"></span>only Skyrizi + Rinvoq in &gt;10% list — succession completed</td>
+        </tr>
+
+        <tr class="section-header"><th colspan="9">Portfolio and TA framing</th></tr>
+
+        <tr>
+          <th>Allergan integration</th>
+          <td class="not-addressed">not addressed</td>
+          <td><span class="cell-conf direct"></span>"proposed acquisition", "diverse entity" forward-look</td>
+          <td><span class="cell-conf direct"></span>"maximizing the benefits of the Allergan acquisition"</td>
+          <td><span class="cell-conf direct"></span>same phrase, last verbatim use</td>
+          <td><span class="cell-conf inferred"></span>Allergan name slides out; "diversified revenue base" replaces it</td>
+          <td><span class="cell-conf inferred"></span>generic "key acquisitions" framing</td>
+          <td><span class="cell-conf inferred"></span>"Allergan, Cerevel, and ImmunoGen" grouped in board-letter retrospect</td>
+          <td><span class="cell-conf inferred"></span>integration treated as concluded</td>
+        </tr>
+
+        <tr>
+          <th>TA portfolio framing</th>
+          <td><span class="cell-conf direct"></span>immunology, oncology, neuroscience + CF, women's health</td>
+          <td><span class="cell-conf direct"></span>same — but forward-looking expansion announced</td>
+          <td><span class="cell-conf direct"></span>imm, hem-onc, aesthetics, neuro, eye care, women's health</td>
+          <td><span class="cell-conf direct"></span>five-TA leadership claim (eye care still in)</td>
+          <td><span class="cell-conf direct"></span>"leadership positions across immunology, oncology, aesthetics, neuroscience and eye care"</td>
+          <td><span class="cell-conf direct"></span>same five-TA phrasing</td>
+          <td><span class="cell-conf direct"></span>same five-TA phrasing</td>
+          <td><span class="cell-conf direct"></span>reordered to "immunology, neuroscience, oncology and aesthetics" — eye care dropped, neuroscience #2</td>
+        </tr>
+
+        <tr>
+          <th>Neuroscience (overall)</th>
+          <td><span class="cell-conf direct"></span>pipeline focus only (Duodopa on-market)</td>
+          <td><span class="cell-conf direct"></span>pipeline focus + Allergan forward-look</td>
+          <td><span class="cell-conf direct"></span>"neuroscience" in post-Allergan TA list</td>
+          <td><span class="cell-conf direct"></span>first dedicated commercial-growth bullet</td>
+          <td><span class="cell-conf direct"></span>"Neuroscience revenue growth driven by Vraylar, Botox Therapeutic, Ubrelvy and Qulipta"</td>
+          <td><span class="cell-conf direct"></span>same bullet + Cerevel-as-pipeline framing</td>
+          <td><span class="cell-conf direct"></span>"complements AbbVie's neuroscience portfolio…best-in-class assets" + emraclidine failure</td>
+          <td><span class="cell-conf direct"></span>neuroscience moved to TA-list position 2</td>
+        </tr>
+
+        <tr>
+          <th>&nbsp;&nbsp;Vraylar</th>
+          <td class="not-addressed">not in AbbVie portfolio</td>
+          <td class="not-addressed">not in AbbVie portfolio</td>
+          <td><span class="cell-conf direct"></span>added via Allergan close</td>
+          <td><span class="cell-conf direct"></span>named in neuroscience growth bullet</td>
+          <td><span class="cell-conf direct"></span>named in growth bullet</td>
+          <td><span class="cell-conf direct"></span>named in growth bullet</td>
+          <td><span class="cell-conf direct"></span>named in growth bullet + IRA negotiation (selected Jan 2025)</td>
+          <td><span class="cell-conf direct"></span>named in growth bullet</td>
+        </tr>
+
+        <tr>
+          <th>&nbsp;&nbsp;Botox Therapeutic</th>
+          <td class="not-addressed">not in AbbVie portfolio</td>
+          <td class="not-addressed">not in AbbVie portfolio</td>
+          <td><span class="cell-conf direct"></span>added via Allergan close</td>
+          <td><span class="cell-conf direct"></span>named in neuroscience growth bullet</td>
+          <td><span class="cell-conf direct"></span>named in growth bullet</td>
+          <td><span class="cell-conf direct"></span>named in growth bullet</td>
+          <td><span class="cell-conf direct"></span>named in growth bullet</td>
+          <td><span class="cell-conf direct"></span>named + Botox selected for Medicare price-setting Jan 2026</td>
+        </tr>
+
+        <tr>
+          <th>&nbsp;&nbsp;Parkinson's (Vyalev, Duodopa)</th>
+          <td><span class="cell-conf direct"></span>Duopa/Duodopa enumerated in Item 1</td>
+          <td><span class="cell-conf direct"></span>Duodopa enumerated</td>
+          <td><span class="cell-conf direct"></span>Duodopa enumerated</td>
+          <td><span class="cell-conf direct"></span>Duodopa enumerated</td>
+          <td><span class="cell-conf direct"></span>Duodopa enumerated</td>
+          <td><span class="cell-conf direct"></span>Vyalev US CRL acknowledged in MD&amp;A pipeline</td>
+          <td><span class="cell-conf direct"></span>"Vyalev/Produodopa" — first time Vyalev appears in Strategic Objectives</td>
+          <td><span class="cell-conf direct"></span>Vyalev in maximize-revenue bullet</td>
+        </tr>
+
+        <tr>
+          <th>&nbsp;&nbsp;Cerevel / pipeline (emraclidine, tavapadon)</th>
+          <td class="not-addressed">not addressed</td>
+          <td class="not-addressed">not addressed</td>
+          <td class="not-addressed">not addressed</td>
+          <td class="not-addressed">not addressed</td>
+          <td class="not-addressed">not addressed</td>
+          <td><span class="cell-conf direct"></span>"proposed Cerevel Therapeutics acquisition" — Strategic Objectives bullet</td>
+          <td><span class="cell-conf direct"></span>close + emraclidine impairment $4.5B; tavapadon Ph3 positive</td>
+          <td><span class="cell-conf direct"></span>tavapadon NDA submitted; Cerevel framing not surfaced in 2026 SO bullets</td>
+        </tr>
+
+        <tr class="section-header"><th colspan="9">Financial framing</th></tr>
+
+        <tr>
+          <th>Pipeline credibility</th>
+          <td><span class="cell-conf direct"></span>"more than 60 compounds or indications"</td>
+          <td><span class="cell-conf direct"></span>"approximately 60"</td>
+          <td><span class="cell-conf direct"></span>"more than 90"</td>
+          <td><span class="cell-conf direct"></span>"approximately 90"</td>
+          <td><span class="cell-conf direct"></span>"over 80"</td>
+          <td><span class="cell-conf direct"></span>"approximately 90"</td>
+          <td><span class="cell-conf direct"></span>"approximately 90"</td>
+          <td><span class="cell-conf direct"></span>"approximately 90" — number stable at platform scale</td>
+        </tr>
+
+        <tr>
+          <th>Diversification claim</th>
+          <td><span class="cell-conf direct"></span>"diversifying revenue streams" (modest framing)</td>
+          <td><span class="cell-conf direct"></span>"diversify revenue streams"; Allergan deal as a diversification thesis</td>
+          <td><span class="cell-conf direct"></span>"diversified revenue base with multiple long-term growth drivers" — coined</td>
+          <td><span class="cell-conf direct"></span>same phrase verbatim</td>
+          <td><span class="cell-conf direct"></span>same</td>
+          <td><span class="cell-conf direct"></span>same</td>
+          <td><span class="cell-conf direct"></span>same</td>
+          <td><span class="cell-conf direct"></span>same — 6th consecutive year of identical wording</td>
+        </tr>
+
+        <tr>
+          <th>Commercial execution</th>
+          <td><span class="cell-conf direct"></span>"outstanding execution" — mission</td>
+          <td><span class="cell-conf direct"></span>"strong commercial execution of new product launches"</td>
+          <td><span class="cell-conf direct"></span>same + "leveraging…commercial strength and international infrastructure"</td>
+          <td><span class="cell-conf direct"></span>same</td>
+          <td><span class="cell-conf direct"></span>same</td>
+          <td><span class="cell-conf direct"></span>same</td>
+          <td><span class="cell-conf direct"></span>same</td>
+          <td><span class="cell-conf direct"></span>same — persistent invariant</td>
+        </tr>
+
+        <tr>
+          <th>Capital allocation</th>
+          <td><span class="cell-conf direct"></span>"dividends and share repurchases"</td>
+          <td><span class="cell-conf direct"></span>"strong and growing dividend while also reducing incremental debt"</td>
+          <td><span class="cell-conf direct"></span>"strong and growing dividend while also reducing debt"</td>
+          <td><span class="cell-conf direct"></span>same as FY20</td>
+          <td><span class="cell-conf direct"></span>same as FY20</td>
+          <td><span class="cell-conf direct"></span>"continuing to repay debt"</td>
+          <td><span class="cell-conf direct"></span>same as FY23</td>
+          <td><span class="cell-conf direct"></span>"maintaining a strong investment grade credit rating"</td>
+        </tr>
+
+        <tr>
+          <th>Leverage / debt paydown</th>
+          <td class="not-addressed">not addressed (pre-Allergan)</td>
+          <td><span class="cell-conf direct"></span>arrives in cap-allocation bullet</td>
+          <td><span class="cell-conf direct"></span>institutionalized; ROIC replaces ROE in PSU design</td>
+          <td><span class="cell-conf direct"></span>same</td>
+          <td><span class="cell-conf direct"></span>same</td>
+          <td><span class="cell-conf direct"></span>"continuing to repay"</td>
+          <td><span class="cell-conf direct"></span>same</td>
+          <td><span class="cell-conf direct"></span>"maintaining…investment grade credit rating" — focus shifts from absolute paydown to rating preservation</td>
+        </tr>
+
+        <tr>
+          <th>Shareholder returns</th>
+          <td><span class="cell-conf direct"></span>dividends + buybacks</td>
+          <td><span class="cell-conf direct"></span>buybacks drop out</td>
+          <td><span class="cell-conf direct"></span>dividend-only</td>
+          <td><span class="cell-conf direct"></span>same</td>
+          <td><span class="cell-conf direct"></span>same</td>
+          <td><span class="cell-conf direct"></span>same</td>
+          <td><span class="cell-conf direct"></span>same</td>
+          <td><span class="cell-conf direct"></span>same — dividend identity preserved 7 years</td>
+        </tr>
+
+        <tr class="section-header"><th colspan="9">Regulation, ESG, compensation</th></tr>
+
+        <tr>
+          <th>Pricing / IRA exposure</th>
+          <td class="not-addressed">pre-IRA</td>
+          <td class="not-addressed">pre-IRA</td>
+          <td class="not-addressed">pre-IRA</td>
+          <td class="not-addressed">pre-IRA</td>
+          <td class="not-addressed">not addressed in SO (IRA signed Aug 2022, not yet operative)</td>
+          <td><span class="cell-conf direct"></span>"Imbruvica was selected as one of the first 10" — IRA debuts in MD&amp;A</td>
+          <td><span class="cell-conf direct"></span>Vraylar &amp; Linzess added to 2027 list</td>
+          <td><span class="cell-conf direct"></span>Botox added to 2028 list; $100B voluntary agreement framing</td>
+        </tr>
+
+        <tr>
+          <th>ESG &amp; governance</th>
+          <td><span class="cell-conf direct"></span>governance-as-process language only</td>
+          <td><span class="cell-conf direct"></span>"Equality, Diversity &amp; Inclusion roadmap" (2019)</td>
+          <td><span class="cell-conf direct"></span>"AbbVie's response to the U.S. racial justice movement" appears in Item 1 Human Capital</td>
+          <td><span class="cell-conf direct"></span>continued; "racial equality and social justice" framed as board priority</td>
+          <td><span class="cell-conf direct"></span>EED&amp;I roadmap continued; ESG embedded into AIP strategic goals</td>
+          <td><span class="cell-conf direct"></span>"Equity, Equality, Diversity &amp; Inclusion roadmap" — letter reordered to lead with Equity</td>
+          <td><span class="cell-conf direct"></span>ESG goal 10% weighting persists in AIP</td>
+          <td><span class="cell-conf direct"></span>ESG remains AIP weighting; D&amp;I rebranded as "inclusion for all"</td>
+        </tr>
+
+        <tr>
+          <th>Executive compensation philosophy</th>
+          <td><span class="cell-conf direct"></span>AIP = Net Revenue + IBT + Humira sales; LTI = EPS + relative TSR</td>
+          <td><span class="cell-conf direct"></span>same</td>
+          <td><span class="cell-conf direct"></span>ROIC replaces ROE in PSU; targets raised post-Allergan</td>
+          <td><span class="cell-conf direct"></span>same</td>
+          <td><span class="cell-conf direct"></span>"Platform Revenue" (Humira excluded) introduced into AIP</td>
+          <td><span class="cell-conf direct"></span>Platform Revenue retained, framed as LOE bridge metric</td>
+          <td><span class="cell-conf direct"></span>same; emraclidine failure doesn't visibly resurface in NEO PSU adjustments</td>
+          <td><span class="cell-conf direct"></span>Platform Revenue +19.6% YoY, AIP capped at 200% of target</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<!-- ────────────────────────────────────────────────────────────────────── -->
+<!-- 04 — Invariants                                                         -->
+<!-- ────────────────────────────────────────────────────────────────────── -->
+<section id="invariants">
+  <div class="section-eyebrow"><span class="num">04</span>Invariants</div>
+  <h2>What stayed the same while everything changed</h2>
+  <p class="section-lede">An invariant is a latent strategic structure that persists across changing surface descriptions. Candidate invariants below are stated, then anchored to 4–6 verbatim surface phrases drawn from different years and document types. They are not validated; they are tested. Where evidence strains, I note it.</p>
+
+  <div class="invariant">
+    <div class="inv-label">Invariant 01 · the dividend identity</div>
+    <div class="inv-statement">AbbVie's deepest invariant is that it is a company that pays — and grows — its dividend, regardless of scientific or regulatory turbulence.</div>
+    <div class="inv-evidence">Surface phrases: <em>&ldquo;returning cash to shareholders via dividends and share repurchases&rdquo;</em> (FY18) → <em>&ldquo;via a strong and growing dividend while also reducing incremental debt&rdquo;</em> (FY19) → <em>&ldquo;via a strong and growing dividend while also reducing debt&rdquo;</em> (FY20–FY22) → <em>&ldquo;return cash to shareholders via a strong and growing dividend while also continuing to repay debt&rdquo;</em> (FY23–FY24) → <em>&ldquo;returning cash to shareholders via a strong and growing dividend while maintaining a strong investment grade credit rating&rdquo;</em> (FY25). The clause around the dividend mutates every year. The dividend itself never moves. <span class="conf conf-direct">Direct</span></div>
+    <div class="inv-strain">Strained by: nothing in the corpus. This is the most stable phrase in eight years of strategic objectives.</div>
+  </div>
+
+  <div class="invariant alt-2">
+    <div class="inv-label">Invariant 02 · "outstanding execution" as legitimization</div>
+    <div class="inv-statement">Operational execution is the moral and rhetorical center of the corporate identity — the thing the company can always claim even when scientific or commercial outcomes are mixed.</div>
+    <div class="inv-evidence">Surface phrases: <em>&ldquo;capable of achieving top-tier financial performance through outstanding execution&rdquo;</em> (FY18 mission) — preserved verbatim through FY25. <em>&ldquo;strong commercial execution of new product launches&rdquo;</em> recurs in every Strategic Objectives bullet list FY19–FY25. The 2026 proxy NEO goals open with <em>&ldquo;Execute key strategic initiatives to drive sustainable long-term business performance.&rdquo;</em> Execution is the only word in the mission statement that survived the 2020 mission rewrite. <span class="conf conf-direct">Direct</span></div>
+    <div class="inv-strain">Strained by: the FY2024 emraclidine impairment. A $4.5B intangible-asset write-down following a Phase-2 failure is, by definition, a non-execution event — yet the FY2024 CD&amp;A narrative continues to credit each NEO with &ldquo;achiev[ing] or exceed[ing]&rdquo; their strategic goals.</div>
+  </div>
+
+  <div class="invariant alt-3">
+    <div class="inv-label">Invariant 03 · managed succession from one concentration to another</div>
+    <div class="inv-statement">Underneath the &ldquo;diversification&rdquo; rhetoric, AbbVie has been preparing — operationally and rhetorically — to be a different kind of concentrated company: one product family (Humira) handed off to another (Skyrizi/Rinvoq), with the concentration risk linguistically reframed rather than dissolved.</div>
+    <div class="inv-evidence">Surface evidence: the named-products concentration sentence in Item 1A travels from <em>&ldquo;HUMIRA…accounted for approximately 61%…in 2018&rdquo;</em> → <em>&ldquo;Humira accounted for approximately 27% of AbbVie's total net revenues in 2023&rdquo;</em> → <em>&ldquo;Skyrizi, Humira and Rinvoq each represented greater than 10%…approximately 47% of total net revenues in 2024&rdquo;</em> → <em>&ldquo;Skyrizi and Rinvoq each represented greater than 10%…approximately 42% of total net revenues in 2025.&rdquo;</em> Same sentence template, same risk structure (high concentration in immunology biologics), new names. <span class="conf conf-inferred">Inferred</span> from the persistence of the sentence template across years.</div>
+    <div class="inv-strain">Strained by: the Allergan acquisition is genuine diversification — aesthetics, neuroscience, eye care add revenue streams that do not look like Humira. So "managed succession" is true of the immunology core but understates how much real diversification Allergan produced.</div>
+  </div>
+
+  <div class="invariant alt-4">
+    <div class="inv-label">Invariant 04 · revealed-preference capital deployment</div>
+    <div class="inv-statement">The TA-prioritization in strategic-objectives text is a smoothed version of the actual capital deployment, which has been overwhelmingly immunology-and-neuroscience.</div>
+    <div class="inv-evidence">Stated priorities (FY22–FY25 TA list): immunology, oncology, aesthetics, neuroscience, eye care — five equally-weighted areas. Actual capital deployment in this window: Allergan $63B (primarily aesthetics + neuroscience + eye care, May 2020); Cerevel $8.7B (neuroscience, Aug 2024); ImmunoGen $10.1B (oncology, Feb 2024); Aliada $1.4B (neuroscience, Dec 2024); Gilgamesh, Alector partnerships (neuroscience). Of the named multi-billion-dollar deals 2020–2025, neuroscience touches all but one. <span class="conf conf-inferred">Inferred</span> (deal sizes from FY24 10-K Note 5; TA mapping from corpus).</div>
+    <div class="inv-strain">Strained by: ImmunoGen ($10.1B) is squarely oncology, not neuroscience. The Skyrizi/Rinvoq commercial spending — by far the largest annual capital allocation in the corpus — is also not deal-shaped. So "neuroscience as the M&amp;A target of choice" is a real pattern in deals but doesn't describe total capital deployment.</div>
+  </div>
+
+</section>
+
+
+<!-- ────────────────────────────────────────────────────────────────────── -->
+<!-- 05 — Pressure mapping                                                   -->
+<!-- ────────────────────────────────────────────────────────────────────── -->
+<section id="pressure">
+  <div class="section-eyebrow"><span class="num">05</span>Pressure mapping</div>
+  <h2>Each phrase, the thing it answers</h2>
+  <p class="section-lede">Left column: a piece of AbbVie language, verbatim. Right column: the external pressure or question it appears to be responding to. Tagged DIRECT where the response/pressure pair is co-textually clear, INFERRED where the pressure has to be reconstructed.</p>
+
+  <div class="pressure-map">
+
+    <div class="pressure-pair">
+      <div class="lang"><em>&ldquo;maximizing the benefits of a diversified revenue base with multiple long-term growth drivers.&rdquo;</em><span class="src">2020–2025, 10-K Strategic Objectives bullet (i)</span></div>
+      <div class="pressure-text"><strong>The Humira-concentration question.</strong> Investors had spent 2017–2019 modeling "what is AbbVie after Humira?" The sentence answers that there is no single answer — there are <em>multiple growth drivers</em>. The verbatim persistence across six years signals the phrase is doing strategic work, not annual reporting.</div>
+      <span class="conf conf-direct">Direct</span>
+    </div>
+
+    <div class="pressure-pair">
+      <div class="lang"><em>&ldquo;Effectively managing the impact of Humira biosimilar erosion.&rdquo;</em><span class="src">FY2022 10-K Strategic Objectives bullet · first appearance</span></div>
+      <div class="pressure-text"><strong>U.S. Humira loss of exclusivity (Jan 2023).</strong> &ldquo;Effectively managing&rdquo; encodes that there is no plan to <em>prevent</em> the erosion — only to manage its shape. The bullet appears the year before US LOE and disappears from the FY2025 strategic objectives bullets once the erosion is no longer the marginal story.</div>
+      <span class="conf conf-direct">Direct</span>
+    </div>
+
+    <div class="pressure-pair">
+      <div class="lang"><em>&ldquo;The acquisition complements AbbVie's neuroscience portfolio, adding a wide range of potentially best-in-class assets that may transform standards of care across psychiatric and neurological disorders where significant unmet needs remain for patients.&rdquo;</em><span class="src">FY2024 10-K, Cerevel acquisition framing</span></div>
+      <div class="pressure-text"><strong>Justifying $8.7B for a pre-commercial neuroscience biotech.</strong> The phrase has three load-bearing hedges: <em>potentially</em> best-in-class, <em>may</em> transform, <em>significant unmet needs</em> (an industry phrase that means "no incumbent drug works well"). Pre-readout language doing the work of pre-commercial valuation.</div>
+      <span class="conf conf-inferred">Inferred</span>
+    </div>
+
+    <div class="pressure-pair">
+      <div class="lang"><em>&ldquo;Platform Revenue is a non-GAAP metric comprised of net revenues less total Humira sales… We expect this metric to inform our focus as we navigate the Humira loss of exclusivity period and eventual return to growth.&rdquo;</em><span class="src">2023 DEF14A CD&amp;A, Short-Term Incentive Performance Measures</span></div>
+      <div class="pressure-text"><strong>The "what should we pay executives for" question, asked in a year when ~25% of revenue is about to disappear.</strong> Net revenue as a comp metric would have made executives accountable for the cliff. Platform Revenue makes them accountable for the rest. A clean rhetorical solution to an unmanageable accounting one.</div>
+      <span class="conf conf-direct">Direct</span>
+    </div>
+
+    <div class="pressure-pair">
+      <div class="lang"><em>&ldquo;AbbVie pledged $100 billion in U.S.-based research and development and capital investments, including manufacturing, over the next decade. Under this voluntary agreement, the U.S. government has agreed to provide AbbVie a three-year exemption from tariffs and future price mandates.&rdquo;</em><span class="src">FY2025 10-K Item 7 Recent Events</span></div>
+      <div class="pressure-text"><strong>IRA Medicare-negotiation pressure on Vraylar (2027) and Botox (2028), plus tariff risk.</strong> The language is striking: &ldquo;voluntary agreement,&rdquo; &ldquo;pledged,&rdquo; &ldquo;has agreed to provide.&rdquo; This is the only place in the corpus where AbbVie reports negotiating bilaterally with the U.S. government. It reads not as disclosure but as an aspirational structural fix to the IRA exposure problem.</div>
+      <span class="conf conf-inferred">Inferred</span>
+    </div>
+
+    <div class="pressure-pair">
+      <div class="lang"><em>&ldquo;Over the past several years, AbbVie navigated the loss of exclusivity of its largest product in the U.S., integrated several acquisitions including Allergan, Cerevel, and ImmunoGen, and returned to revenue growth in 2024. Particularly as we transition past these major events, the Board feels that continuity and accountability of the leadership structure should remain consistent.&rdquo;</em><span class="src">2026 DEF14A, board-leadership rationale</span></div>
+      <div class="pressure-text"><strong>Investor question about combining Chairman + CEO roles in Robert Michael (effective July 2025).</strong> The board's reply re-narrates 2019–2024 as a sequence the company successfully &ldquo;navigated,&rdquo; making leadership continuity the natural conclusion. Compressing eight years of pressure into one sentence is itself a positioning move.</div>
+      <span class="conf conf-inferred">Inferred</span>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ────────────────────────────────────────────────────────────────────── -->
+<!-- 06 — Boilerplate vs signal                                              -->
+<!-- ────────────────────────────────────────────────────────────────────── -->
+<section id="boilerplate">
+  <div class="section-eyebrow"><span class="num">06</span>Signal vs boilerplate</div>
+  <h2>Which phrases mean something</h2>
+  <p class="section-lede">Each tracked phrase is classified by temporal anchor and within-AbbVie persistence. Cross-pharma peer comparison is not performed: the corpus contains only AbbVie filings plus two BMS 10-Ks (FY2023, FY2024), which is too narrow for a defensible peer baseline. The "boilerplate" verdict is therefore weaker than the spec ideal: it rests on within-AbbVie persistence and on whether the phrase is itself a regulatory mandate (Item 1A risk-factor disclosures, GAAP recognition), not on whether peers say the same thing.</p>
+
+  <div class="bp-grid">
+
+    <div class="bp-row">
+      <div class="phrase"><em>&ldquo;diversified revenue base with multiple long-term growth drivers&rdquo;</em></div>
+      <span class="bp-tag high-signal">High signal</span>
+      <div class="bp-rationale">Appears for the first time in FY2020 immediately post-Allergan close. Persists <em>verbatim</em> through FY2025. Is bullet (i) of every Strategic Objectives list. Localization (top of MD&amp;A forward-looking section) + persistence + identical wording makes this AbbVie's primary identity claim in the post-Humira era.</div>
+    </div>
+
+    <div class="bp-row">
+      <div class="phrase"><em>&ldquo;outstanding execution&rdquo;</em></div>
+      <span class="bp-tag meaningful">Meaningful repetition</span>
+      <div class="bp-rationale">Appears in the FY2018 mission statement and survives the 2020 mission rewrite. Recurs in every subsequent Strategic Objectives section and in 2026 CD&amp;A NEO goals. Wide industry use makes this likely boilerplate <em>in isolation</em>; its institutional placement at the top of every mission statement gives it within-AbbVie load-bearing weight. Without peer corpus it cannot be cleanly separated from industry-wide pharma rhetoric.</div>
+    </div>
+
+    <div class="bp-row">
+      <div class="phrase"><em>&ldquo;Platform Revenue&rdquo;</em> (non-GAAP, defined as net revenues less Humira)</div>
+      <span class="bp-tag event">Event-responsive</span>
+      <div class="bp-rationale">Introduced FY2022 (in the 2023 proxy covering FY2022 comp); explicitly tied by AbbVie itself to the Humira LOE in the metric's own footnote. The phrase is event-coupled by AbbVie's definition — the company tells you what pressure it answers. Rare case of a high-signal phrase that is also explicitly self-described as event-responsive.</div>
+    </div>
+
+    <div class="bp-row">
+      <div class="phrase"><em>&ldquo;research-based biopharmaceutical company&rdquo;</em></div>
+      <span class="bp-tag boilerplate">Likely boilerplate</span>
+      <div class="bp-rationale">FY2018: &ldquo;global, research-based biopharmaceutical company.&rdquo; FY2025: same five words preserved. Industry-standard self-descriptor (pre-IRA-era pharma identity). High persistence + low contextual responsiveness. Likely boilerplate <em>within AbbVie</em>; pending peer comparison to confirm it's also industry-wide.</div>
+    </div>
+
+    <div class="bp-row">
+      <div class="phrase"><em>&ldquo;effective management of HUMIRA international biosimilar erosion&rdquo;</em> / <em>&ldquo;Effectively managing the impact of Humira biosimilar erosion&rdquo;</em></div>
+      <span class="bp-tag event">Event-responsive</span>
+      <div class="bp-rationale">First as a strategic objective in FY2019 referencing the EU biosimilar entry (already underway). Sharpens into a full strategic-objectives bullet in FY2022 immediately before US LOE. Drops from FY2025 strategic objectives. Tightly bracketed to the biosimilar entry window — appears, persists, exits when the pressure subsides.</div>
+    </div>
+
+    <div class="bp-row">
+      <div class="phrase"><em>&ldquo;maximizing the benefits of the Allergan acquisition&rdquo;</em></div>
+      <span class="bp-tag event">Event-responsive</span>
+      <div class="bp-rationale">FY2019–FY2021 in Strategic Objectives. Slides out of the strategic-objectives clause in FY2022 once integration is described as essentially complete (FY2022 10-K: &ldquo;AbbVie realized $2.5 billion of annual cost synergies in 2022&rdquo;). The phrase's <em>disappearance</em> is the signal — it tells you when AbbVie believes integration as a strategic narrative has run its course.</div>
+    </div>
+
+    <div class="bp-row">
+      <div class="phrase"><em>&ldquo;commitment to a robust return of capital to stockholders&rdquo;</em></div>
+      <span class="bp-tag meaningful">Meaningful repetition</span>
+      <div class="bp-rationale">Recurs across every DEF14A 2019–2026 in the CD&amp;A business-performance section. The dividend itself has increased every year. Persistence is high; the corresponding action is also high; the phrase tracks the action. Probably industry-wide language, but in AbbVie's case backed by sustained behavior — making it meaningful rather than empty.</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ────────────────────────────────────────────────────────────────────── -->
+<!-- 07 — TA drift & neuroscience deep dive                                  -->
+<!-- ────────────────────────────────────────────────────────────────────── -->
+<section id="ta-drift">
+  <div class="section-eyebrow"><span class="num">07</span>Therapeutic area drift</div>
+  <h2>Where rhetorical weight lives</h2>
+  <p class="section-lede">Rhetorical primacy is measured here by the order in which therapeutic areas appear in the Item 7 Company Overview / Strategic Objectives sections. Order is not the only signal, but it is the one signal that is reproducible across years without subjective coding. Each year's row shows the verbatim TA sequence.</p>
+
+  <div class="ta-rank">
+    <div class="ta-year"><span class="yr">FY18</span><span class="seq">pipeline focus &mdash; <strong>immunology</strong>, <strong>oncology</strong>, <strong>neuroscience</strong> &mdash; with additional targeted investment in cystic fibrosis and women's health</span></div>
+    <div class="ta-year"><span class="yr">FY19</span><span class="seq">same as FY18; forward-look adds <strong>aesthetics</strong>, <strong>eye care</strong>, <strong>virology</strong> via Allergan</span></div>
+    <div class="ta-year"><span class="yr">FY20</span><span class="seq">leadership positions in <strong>immunology</strong>, <strong>hematologic oncology</strong>, <strong>aesthetics</strong>, <strong>neuroscience</strong>, <strong>eye care</strong>, women's health</span></div>
+    <div class="ta-year"><span class="yr">FY21</span><span class="seq"><strong>immunology</strong>, <strong>oncology</strong>, <strong>aesthetics</strong>, <strong>neuroscience</strong>, <strong>eye care</strong></span></div>
+    <div class="ta-year"><span class="yr">FY22</span><span class="seq"><strong>immunology</strong>, <strong>oncology</strong>, <strong>aesthetics</strong>, <strong>neuroscience</strong>, <strong>eye care</strong> &mdash; identical to FY21</span></div>
+    <div class="ta-year"><span class="yr">FY23</span><span class="seq"><strong>immunology</strong>, <strong>oncology</strong>, <strong>aesthetics</strong>, <strong>neuroscience</strong>, <strong>eye care</strong> &mdash; identical</span></div>
+    <div class="ta-year"><span class="yr">FY24</span><span class="seq"><strong>immunology</strong>, <strong>oncology</strong>, <strong>aesthetics</strong>, <strong>neuroscience</strong>, <strong>eye care</strong> &mdash; identical</span></div>
+    <div class="ta-year"><span class="yr">FY25</span><span class="seq"><strong>immunology</strong>, <strong>neuroscience</strong>, <strong>oncology</strong>, <strong>aesthetics</strong> &mdash; <em>eye care omitted; neuroscience promoted from 4th to 2nd; new sources: obesity</em></span></div>
+  </div>
+  <p class="muted" style="margin-top: 0.8rem;">FY2025 is the first year in the eight-year window where the TA-list itself is rewritten. Until then the 2021 list survived four annual reports verbatim. <span class="conf conf-direct">Direct</span></p>
+
+  <h3 id="ta-neuro">Neuroscience: the long arc</h3>
+  <p class="section-lede">Within the TA drift, neuroscience is the franchise that travels furthest in rhetorical role. Three working phases — proposed, not assumed:</p>
+
+  <h4>Phase A · pre-Allergan baseline (FY2018–FY2019)</h4>
+  <p>Neuroscience is one of three pipeline focus areas alongside immunology and oncology — <em>R&amp;D framing only</em>. On-market presence is essentially Duodopa (advanced Parkinson's, infusion-pump gel). The FY2018 Item 1 lists "neurological disorders, such as Parkinson's disease" as one of nine treatment areas; the Strategic Objectives bullets do not mention neuroscience by name. <span class="conf conf-direct">Direct</span></p>
+
+  <h4>Phase B · Allergan integration framing (FY2020–FY2021)</h4>
+  <p>Neuroscience enters the post-Allergan TA-list as one of six leadership areas. The FY2020 Strategic Objectives include a bullet — &ldquo;Expansion of the company's revenue base from additional Allergan products contributing to key aesthetics and neuroscience portfolios&rdquo; — that pairs neuroscience with aesthetics as the primary <em>commercial contributions</em> from the deal. By FY2021, this hardens into its own bullet: <em>&ldquo;Neuroscience revenue growth driven by Vraylar, Botox Therapeutic, Ubrelvy and recently launched Qulipta.&rdquo;</em> First time the named franchises appear in a Strategic Objectives bullet rather than a product overview. <span class="conf conf-direct">Direct</span></p>
+
+  <h4>Phase C · pipeline thesis era (FY2023–FY2024)</h4>
+  <p>FY2023 Strategic Objectives add the proposed Cerevel acquisition. The Cerevel rationale — articulated more fully in the FY2024 10-K — frames neuroscience as a pipeline thesis: <em>&ldquo;wide range of potentially best-in-class assets that may transform standards of care across psychiatric and neurological disorders where significant unmet needs remain for patients.&rdquo;</em> Two of these assets read out in 2024: tavapadon Phase 3 positive in Parkinson's (TEMPO-1, TEMPO-2), emraclidine Phase 2 negative in schizophrenia (EMPOWER-1, -2). The FY2024 10-K records both events plus a $4.5B intangible-asset impairment specific to emraclidine. <span class="conf conf-direct">Direct</span></p>
+
+  <h4>Phase D · post-emraclidine reframing (FY2025)</h4>
+  <p>The FY2025 Company Overview moves neuroscience from fourth to second in the TA list, the only TA to be reordered. The 2026 strategic objectives no longer mention Cerevel by name. Vyalev — an internal-origin Parkinson's franchise approved in the US in October 2024 — appears in the Strategic Objectives bullet for the first time as &ldquo;Vyalev/Produodopa.&rdquo; The rhetorical center of neuroscience moves from a single-asset, big-bet schizophrenia thesis (emraclidine, 2024) back to a franchise-portfolio thesis (Vraylar, Botox Therapeutic, Ubrelvy, Qulipta, Vyalev, plus tavapadon as a remaining pipeline anchor). <span class="conf conf-inferred">Inferred</span> from the changing composition of the named-products lists across FY2024 and FY2025 Strategic Objectives.</p>
+
+  <details class="evidence">
+    <summary>Evidence · franchise first-appearances in Strategic Objectives bullets</summary>
+    <div class="quotes">
+      <blockquote>"Neuroscience revenue growth driven by Vraylar, Botox Therapeutic, Ubrelvy and recently launched Qulipta."</blockquote>
+      <cite>(2021, 10-K, Item 7 &mdash; 2022 Strategic Objectives bullet) &mdash; first dedicated neuroscience commercial bullet <a href="#m04">[M04]</a></cite>
+      <blockquote>"Successful integration of the ImmunoGen, Inc. and proposed Cerevel Therapeutics acquisitions."</blockquote>
+      <cite>(2023, 10-K, Item 7 &mdash; 2024 Strategic Objectives bullet) &mdash; first Cerevel mention in SO <a href="#m06">[M06]</a></cite>
+      <blockquote>"Maximizing revenue growth of our key on-market products, including Skyrizi, Rinvoq, Venclexta, Elahere, Vraylar, Ubrelvy, Qulipta, Vyalev/Produodopa, Botox and Juvederm Collection."</blockquote>
+      <cite>(2024, 10-K, Item 7 &mdash; 2025 Strategic Objectives bullet) &mdash; Vyalev's first SO appearance <a href="#m07">[M07]</a></cite>
+      <blockquote>"AbbVie is a global, diversified research-based biopharmaceutical company positioned for success with a comprehensive product portfolio that has leadership positions across immunology, neuroscience, oncology and aesthetics."</blockquote>
+      <cite>(2025, 10-K, Item 7 &mdash; Company Overview) &mdash; neuroscience promoted to position 2 <a href="#m08">[M08]</a></cite>
+    </div>
+  </details>
+
+  <h4>Candidate neuroscience-specific invariant</h4>
+  <div class="invariant alt-2" style="margin-top: 0.6rem;">
+    <div class="inv-label">Neuroscience invariant · proposed, not validated</div>
+    <div class="inv-statement">Neuroscience has been AbbVie's preferred site of strategic ambition — the TA where the company has consistently used acquisition to demonstrate that it can be a different kind of company than Humira-AbbVie was.</div>
+    <div class="inv-evidence">Surface evidence: of AbbVie's six largest M&amp;A or in-license events 2018–2024 (Allergan, ImmunoGen, Cerevel, Aliada, Gilgamesh, Alector), four are wholly or substantially neuroscience-targeted. The 2018 strategic objective list mentioned neuroscience only in pipeline framing; by FY2025 neuroscience is position 2 in the TA list and has its own product enumeration. The franchise has absorbed both the largest individual deal (Allergan, $63B) and the most reputationally costly individual asset failure (emraclidine, $4.5B impairment). <span class="conf conf-inferred">Inferred</span></div>
+    <div class="inv-strain">Strained by: ImmunoGen ($10.1B) is oncology, not neuroscience, and it closed only six months before Cerevel. The full picture is "neuroscience and oncology are the M&amp;A targets," not "neuroscience uniquely." A second strain: post-emraclidine, AbbVie's 2026 strategic objectives do not name Cerevel explicitly, which suggests the company is repositioning away from a single-asset neuroscience thesis even as it elevates neuroscience in the TA list.</div>
+  </div>
+</section>
+
+
+<!-- ────────────────────────────────────────────────────────────────────── -->
+<!-- 08 — Compensation as revealed priority                                  -->
+<!-- ────────────────────────────────────────────────────────────────────── -->
+<section id="compensation">
+  <div class="section-eyebrow"><span class="num">08</span>Compensation as revealed priority</div>
+  <h2>What did AbbVie actually pay executives to care about</h2>
+  <p class="section-lede">Compensation language is read here not as HR boilerplate but as the most credible signal of what the corporation operationally values, because it is the language that directly governs how money flows to the people running the company. Three changes in the AIP / PSU metric set are visible across the 2019–2026 proxies.</p>
+
+  <h3>Performance-metric evolution</h3>
+
+  <div class="evo-table-wrap">
+    <table class="evo">
+      <thead>
+        <tr>
+          <th>Component</th>
+          <th>2019 proxy<br>(FY18 comp)</th>
+          <th>2020 proxy<br>(FY19 comp)</th>
+          <th>2021 proxy<br>(FY20 comp)</th>
+          <th>2022 proxy<br>(FY21 comp)</th>
+          <th>2023 proxy<br>(FY22 comp)</th>
+          <th>2026 proxy<br>(FY25 comp)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Annual Incentive Plan — financial metrics</th>
+          <td>Net Revenues + Income Before Taxes + Humira sales</td>
+          <td>same</td>
+          <td>Net Revenues + IBT (Humira sales sub-metric retained)</td>
+          <td>Net Revenues + IBT</td>
+          <td><span class="cell-conf direct"></span><strong>Platform Revenue (net rev <em>less</em> Humira) + Non-GAAP IBT</strong></td>
+          <td>Platform Revenue + Non-GAAP IBT — retained</td>
+        </tr>
+        <tr>
+          <th>AIP — non-financial weighting</th>
+          <td>strategic / leadership goals (no explicit ESG)</td>
+          <td>same</td>
+          <td>same</td>
+          <td><span class="cell-conf direct"></span>ESG goal embedded into strategic goals (10% weighting)</td>
+          <td>ESG 10% weighting retained</td>
+          <td>ESG 10% retained; "inclusion for all" framing replaces D&amp;I</td>
+        </tr>
+        <tr>
+          <th>PSU — performance metrics</th>
+          <td>EPS + relative TSR + relative ROE modifier</td>
+          <td>same</td>
+          <td><span class="cell-conf direct"></span>EPS + relative TSR + <strong>relative ROIC modifier</strong> (ROE → ROIC, "to place more emphasis on debt management and debt reduction, particularly in the context of the Allergan acquisition")</td>
+          <td>EPS + TSR + ROIC</td>
+          <td>EPS + TSR + ROIC</td>
+          <td>EPS + TSR + ROIC + Non-GAAP Operating Margin</td>
+        </tr>
+        <tr>
+          <th>NEO strategic-goal language</th>
+          <td>"drive top-tier business performance"</td>
+          <td>same + integration</td>
+          <td>integration emphasis</td>
+          <td>"build investor confidence and credibility"; "advance our transformation to a biopharmaceutical culture"</td>
+          <td>same as FY21</td>
+          <td>same + "successfully advance mid- and late-stage pipeline assets"</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The two structural changes:</p>
+  <ol style="margin: 0 0 1rem 1.25rem; line-height: 1.55;">
+    <li><strong>Allergan → ROIC (FY2020 PSU design).</strong> The company explicitly rewrote its long-term incentive metric to reward debt paydown rather than equity return — a direct response to the $63B Allergan debt load. <span class="conf conf-direct">Direct</span></li>
+    <li><strong>Humira LOE → Platform Revenue (FY2022 AIP design).</strong> The company rewrote its annual-incentive metric to <em>exclude</em> the product accounting for ~37% of revenue. By the 2026 proxy, Platform Revenue is described as having grown 19.6% year-over-year and the AIP paid out at the maximum 200% of target. <span class="conf conf-direct">Direct</span></li>
+  </ol>
+  <p>What did <em>not</em> change in a visible way: the November 2024 emraclidine failure ($4.5B impairment) does not surface in 2026 proxy NEO PSU adjustments or strategic-goal restatements. Each NEO is still credited as having &ldquo;achieved or exceeded&rdquo; their 2025 strategic goals. <span class="conf conf-inferred">Inferred</span></p>
+
+  <details class="evidence">
+    <summary>Evidence · 3 verbatim CD&amp;A quotes</summary>
+    <div class="quotes">
+      <blockquote>"Platform Revenue is a non-GAAP metric comprised of net revenues less total Humira sales and adjusted for foreign exchange&hellip;We expect this metric to inform our focus as we navigate the Humira loss of exclusivity period and eventual return to growth. This was a new incentive metric for 2022 without a comparable 2021 actual result."</blockquote>
+      <cite>(2023, DEF14A, CD&amp;A &mdash; Short-Term Incentive Performance Measures, footnote 3) <a href="#m12">[M12]</a></cite>
+      <blockquote>"Beginning with performance-vested restricted stock awards made in 2020, we replaced the relative return on equity (ROE) metric with a relative ROIC metric in order to place more emphasis on debt management and debt reduction, particularly in the context of the Allergan acquisition."</blockquote>
+      <cite>(2021, DEF14A, CD&amp;A &mdash; Long-Term Incentives) <a href="#m13">[M13]</a></cite>
+      <blockquote>"The committee retained for 2025 the use of Platform Revenue, first introduced as a performance metric within the PIP in 2022, to reinforce management's focus on growth opportunities to offset anticipated revenue decline associated with U.S. Humira loss of exclusivity (LOE)."</blockquote>
+      <cite>(2026, DEF14A, CD&amp;A &mdash; Short-Term Incentive Strategic and Leadership Goals, footnote 2) <a href="#m16">[M16]</a></cite>
+    </div>
+  </details>
+</section>
+
+
+<!-- ────────────────────────────────────────────────────────────────────── -->
+<!-- 09 — Final synthesis                                                    -->
+<!-- ────────────────────────────────────────────────────────────────────── -->
+<section id="synthesis">
+  <div class="section-eyebrow"><span class="num">09</span>Synthesis</div>
+  <h2>What the language is doing</h2>
+
+  <div class="synthesis">
+    <p>Across eight fiscal years, AbbVie's filings describe a corporation that knows it is becoming a different company and is doing so in two registers at once: a continuity register (we are still the disciplined-execution biopharmaceutical company we have always been) and a succession register (the products, the leadership, the therapeutic-area emphasis, and even the metric we pay people on, have all been replaced).</p>
+
+    <p>The most defensible invariant is <em>the dividend identity</em>. The clause around &ldquo;a strong and growing dividend&rdquo; mutates every year — share repurchases drop out, debt paydown is added then softened to credit-rating preservation — but the dividend is the thing the corporation always tells stockholders it will preserve. The most institutionally-engineered shift is the 2022 introduction of <em>Platform Revenue</em> as an annual incentive metric. Rewriting how executives are paid is the most expensive way a company can demonstrate that it has internalized a new framing; AbbVie did it in the same year US Humira biosimilars entered the market.</p>
+
+    <p>The most interesting tension is between the diversification language (FY2020 onward, &ldquo;diversified revenue base with multiple long-term growth drivers,&rdquo; six years verbatim) and the FY2025 risk-factor admission that two products — Skyrizi and Rinvoq — now account for ~42% of revenue. The company is more diversified than it was in 2018 (61% Humira), but its post-Humira immunology core looks structurally similar: a small number of high-margin biologics carrying the corporation. The diversification was real; the concentration risk also persists.</p>
+
+    <p>Where the evidence runs out: I cannot rigorously evaluate whether the 2025 voluntary agreement with the U.S. government ($100B for a tariff/price-mandate exemption) is unusual without peer corpus — the spec-required Section 09 peer comparison is omitted for that reason. I cannot tell from the corpus whether the emraclidine failure changed internal incentives in any way that does not surface in the proxy. And I cannot test whether the FY2025 TA reordering (neuroscience promoted to position 2) reflects an actual reweighting of capital and R&amp;D spend or only of language.</p>
+
+    <p>Read the corpus as a real company navigating real pressure, not as either a confession or a marketing artifact. The language is doing the job language does in a regulated disclosure environment: it conserves what must be conserved (the dividend, the execution claim), surrenders what must be surrendered (Humira as the named load-bearing product), and re-narrates what is in motion (neuroscience, succession, leverage) in increasingly stable phrasings. The patterns in this notebook are the residue of that adaptation, not its motive.</p>
+  </div>
+</section>
+
+
+<!-- ────────────────────────────────────────────────────────────────────── -->
+<!-- 10 — Source manifest                                                    -->
+<!-- ────────────────────────────────────────────────────────────────────── -->
+<section id="manifest">
+  <div class="section-eyebrow"><span class="num">10</span>Source manifest</div>
+  <h2>Every filing consulted</h2>
+  <p class="section-lede">Sixteen primary documents. Every quote on this page traces back to one of these. The filing path is relative to <code>data/company/abbvie/filings/</code> in this repository. EDGAR accession numbers shown for reproducibility.</p>
+
+  <h3>Annual reports — Form 10-K, FY2018–FY2025</h3>
+  <ul class="manifest-list">
+    <li id="m01">
+      <span class="mid">M01</span>
+      <span class="mtype">10-K · FY2018</span>
+      <span class="mtitle">AbbVie Inc. annual report for fiscal year ended Dec 31, 2018. Filed Feb 2019.<br><small>10-K/2019/0001551152-19-000008/abbv-20181231x10k.htm</small></span>
+    </li>
+    <li id="m02">
+      <span class="mid">M02</span>
+      <span class="mtype">10-K · FY2019</span>
+      <span class="mtitle">AbbVie Inc. annual report for fiscal year ended Dec 31, 2019. Filed Feb 2020.<br><small>10-K/2020/0001551152-20-000007/abbv-20191231x10k.htm</small></span>
+    </li>
+    <li id="m03">
+      <span class="mid">M03</span>
+      <span class="mtype">10-K · FY2020</span>
+      <span class="mtitle">AbbVie Inc. annual report for fiscal year ended Dec 31, 2020. Filed Feb 2021. First post-Allergan annual report.<br><small>10-K/2021/0001551152-21-000008/abbv-20201231.htm</small></span>
+    </li>
+    <li id="m04">
+      <span class="mid">M04</span>
+      <span class="mtype">10-K · FY2021</span>
+      <span class="mtitle">AbbVie Inc. annual report for fiscal year ended Dec 31, 2021. Filed Feb 2022.<br><small>10-K/2022/0001551152-22-000007/abbv-20211231.htm</small></span>
+    </li>
+    <li id="m05">
+      <span class="mid">M05</span>
+      <span class="mtype">10-K · FY2022</span>
+      <span class="mtitle">AbbVie Inc. annual report for fiscal year ended Dec 31, 2022. Filed Feb 2023. Year of US Humira LOE onset.<br><small>10-K/2023/0001551152-23-000011/abbv-20221231.htm</small></span>
+    </li>
+    <li id="m06">
+      <span class="mid">M06</span>
+      <span class="mtype">10-K · FY2023</span>
+      <span class="mtitle">AbbVie Inc. annual report for fiscal year ended Dec 31, 2023. Filed Feb 2024. First IRA / Medicare-negotiation paragraph.<br><small>10-K/2024/0001551152-24-000011/abbv-20231231.htm</small></span>
+    </li>
+    <li id="m07">
+      <span class="mid">M07</span>
+      <span class="mtype">10-K · FY2024</span>
+      <span class="mtitle">AbbVie Inc. annual report for fiscal year ended Dec 31, 2024. Filed Feb 2025. Cerevel + ImmunoGen close; CEO transition; emraclidine impairment.<br><small>10-K/2025/0001551152-25-000020/abbv-20241231.htm</small></span>
+    </li>
+    <li id="m08">
+      <span class="mid">M08</span>
+      <span class="mtype">10-K · FY2025</span>
+      <span class="mtitle">AbbVie Inc. annual report for fiscal year ended Dec 31, 2025. Filed Feb 2026. First Humira-omitted product-concentration sentence.<br><small>10-K/2026/0001551152-26-000008/abbv-20251231.htm</small></span>
+    </li>
+  </ul>
+
+  <h3>Proxy statements — DEF14A, 2019–2026</h3>
+  <ul class="manifest-list">
+    <li id="m09">
+      <span class="mid">M09</span>
+      <span class="mtype">DEF14A · 2019</span>
+      <span class="mtitle">Proxy for 2019 annual meeting (covering FY2018 compensation).<br><small>DEF14A/2019/0001047469-19-001544/a2238040zdef14a.htm</small></span>
+    </li>
+    <li id="m10">
+      <span class="mid">M10</span>
+      <span class="mtype">DEF14A · 2020</span>
+      <span class="mtitle">Proxy for 2020 annual meeting (covering FY2019 compensation; pre-Allergan close).<br><small>DEF14A/2020/0001047469-20-001710/a2241076zdef14a.htm</small></span>
+    </li>
+    <li id="m11">
+      <span class="mid">M11</span>
+      <span class="mtype">DEF14A · 2021</span>
+      <span class="mtitle">Proxy for 2021 annual meeting (covering FY2020 compensation; first post-Allergan proxy; ROE→ROIC switch disclosed).<br><small>DEF14A/2021/0001558370-21-003318/tmb-20210507xdef14a.htm</small></span>
+    </li>
+    <li id="m12">
+      <span class="mid">M12</span>
+      <span class="mtype">DEF14A · 2023</span>
+      <span class="mtitle">Proxy for 2023 annual meeting (covering FY2022 compensation; Platform Revenue introduced as AIP metric).<br><small>DEF14A/2023/0001558370-23-004204/abbv-20230505xdef14a.htm</small></span>
+    </li>
+    <li id="m13">
+      <span class="mid">M13</span>
+      <span class="mtype">DEF14A · 2022</span>
+      <span class="mtitle">Proxy for 2022 annual meeting (covering FY2021 compensation).<br><small>DEF14A/2022/0001558370-22-004011/tmb-20220506xdef14a.htm</small></span>
+    </li>
+    <li id="m14">
+      <span class="mid">M14</span>
+      <span class="mtype">DEF14A · 2024</span>
+      <span class="mtitle">Proxy for 2024 annual meeting (covering FY2023 compensation).<br><small>DEF14A/2024/0001558370-24-003496/abbv-20240503xdef14a.htm</small></span>
+    </li>
+    <li id="m15">
+      <span class="mid">M15</span>
+      <span class="mtype">DEF14A · 2025</span>
+      <span class="mtitle">Proxy for 2025 annual meeting (covering FY2024 compensation; first post-emraclidine, post-CEO-transition proxy).<br><small>DEF14A/2025/0001558370-25-003537/abbv-20250509xdef14a.htm</small></span>
+    </li>
+    <li id="m16">
+      <span class="mid">M16</span>
+      <span class="mtype">DEF14A · 2026</span>
+      <span class="mtitle">Proxy for 2026 annual meeting (covering FY2025 compensation; rationalizes combined Chairman+CEO role in Robert Michael).<br><small>DEF14A/2026/0001104659-26-033387/abbv-20260508xdef14a.htm</small></span>
+    </li>
+  </ul>
+
+  <h3>Materials referenced but not used for verbatim quotes</h3>
+  <ul class="manifest-list">
+    <li>
+      <span class="mid">—</span>
+      <span class="mtype">Pipeline snapshots</span>
+      <span class="mtitle">AbbVie Pipeline page captures (2019–2026) at <code>data/company/abbvie/pipeline_snapshots/</code>. Used qualitatively for the Cerevel-era pipeline composition discussion in Section 07; no verbatim quotes from these snapshots appear above.</span>
+    </li>
+    <li>
+      <span class="mid">—</span>
+      <span class="mtype">Revenue facts</span>
+      <span class="mtitle"><code>data/_index/revenue_facts.csv</code>. Underpins the Humira-concentration percentages referenced in Section 01 metadata; the percentages themselves are quoted directly from each year's 10-K, not from this CSV.</span>
+    </li>
+  </ul>
+
+  <h3>Not provided (sections affected)</h3>
+  <ul class="manifest-list">
+    <li>
+      <span class="mid">—</span>
+      <span class="mtype">events.csv</span>
+      <span class="mtitle">No <code>/corpus/events/events.csv</code> in repository. The narrative-timeline event ribbon (per spec) is omitted; events are instead described inline in Section 01 with provenance from each year's 10-K Item 7. <em>The pipeline overview page <a href="story.html">story.html</a> renders a swimlane of dated milestones if you want the visual event timeline.</em></span>
+    </li>
+    <li>
+      <span class="mid">—</span>
+      <span class="mtype">segment_revenue.csv</span>
+      <span class="mtitle">No <code>/corpus/financials/segment_revenue.csv</code> in repository. Section 07 TA drift is rendered as a text-rank list of TA-list ordering rather than as a stacked bar of revenue share. <em>The revenue dashboard <a href="index.html">index.html</a> shows the actual neuroscience revenue trajectory if you want the financial anchor.</em></span>
+    </li>
+    <li>
+      <span class="mid">—</span>
+      <span class="mtype">peers corpus</span>
+      <span class="mtitle">No <code>/corpus/peers/</code> in repository; only two BMS 10-Ks (<code>data/competitors/bms/</code>, FY2023 + FY2024) are present, which is too narrow a window for a defensible peer comparison. Section 09 of the spec (peer comparison) is therefore omitted per the spec's own rule 4 ("never fabricate"). The boilerplate-vs-signal classifier in Section 06 also runs in a weakened mode without peer data, as noted there.</span>
+    </li>
+  </ul>
+</section>
+
+<footer class="coda">
+  <p>Source corpus: 16 EDGAR filings, AbbVie Inc. (CIK 0001551152), FY2018–FY2025. <code>data/company/abbvie/filings/</code></p>
+  <p>Companion pages: <a href="index.html">franchise revenue trajectory</a> &middot; <a href="story.html">portfolio &amp; pipeline swimlane</a></p>
+  <p style="color:#a8a497; font-size: 12px; letter-spacing: 0.05em;">Per the spec's hard rules: every quote is verbatim from the named filing; every analytical claim carries a confidence tag; sections requiring corpus not present in this repository are omitted rather than fabricated.</p>
+</footer>
+
+</main>
+</div>
+
+<script>
+// Highlight the current section in the side nav as the user scrolls.
+const sections = ["timeline","migration","evolution","invariants","pressure",
+                  "boilerplate","ta-drift","compensation","synthesis","manifest"]
+  .map(id => document.getElementById(id))
+  .filter(Boolean);
+const navLinks = new Map();
+document.querySelectorAll("nav.side a").forEach(a => {
+  const id = a.getAttribute("href").slice(1);
+  navLinks.set(id, a);
+});
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(a => a.classList.remove("active"));
+      const a = navLinks.get(e.target.id);
+      if (a) a.classList.add("active");
+    }
+  });
+}, { rootMargin: "-30% 0px -65% 0px", threshold: 0 });
+
+sections.forEach(s => io.observe(s));
+</script>
+
+</body>
+</html>

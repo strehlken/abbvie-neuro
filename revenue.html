@@ -20,7 +20,7 @@ body {
 }
 
 .page {
-  max-width: 880px;
+  max-width: 960px;
   margin: 0 auto;
   padding: 4rem 1.5rem 6rem;
 }
@@ -60,16 +60,30 @@ h1 {
   line-height: 1.55;
 }
 
-section { margin-bottom: 3.5rem; }
+/* Sections are separated by vertical rhythm + eyebrow labels, not rules.
+   The hero h1 is the only top-tier headline; section h2s sit one tier
+   smaller and lighter so the page reads with a clear hierarchy. */
+section { margin-bottom: 0; }
+.section-eyebrow {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #8a8a92;
+  font-weight: 600;
+  margin-top: 6rem;
+  margin-bottom: 0.75rem;
+}
+.section-eyebrow .num { color: #c0c0c8; margin-right: 0.5rem; }
 h2 {
   font-family: 'Brandon Grotesque', system-ui, sans-serif;
   font-weight: 700;
-  font-size: 1.375rem;
-  line-height: 1.2;
+  font-size: 1.25rem;
+  line-height: 1.25;
   text-transform: uppercase;
   letter-spacing: 0.02em;
   color: #232324;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.4rem;
 }
 h3 {
   font-family: 'Brandon Grotesque', system-ui, sans-serif;
@@ -93,30 +107,25 @@ p.subtitle {
   margin-bottom: 1rem;
 }
 
-hr.divider {
-  border: 0;
-  height: 1px;
-  background: #e5e5e8;
-  margin: 2.5rem auto;
-  max-width: 120px;
-}
-
-/* sticky controls bar — same idiom as chapter-bar */
+/* Sticky filter bar. Translucent backdrop + hairline border that only
+   shows once the user has scrolled past the hero. */
 .controls {
   position: sticky;
   top: 0;
   z-index: 30;
   margin: 1.5rem -1.5rem 2rem;
-  padding: 0.85rem 1.5rem;
-  background: rgba(255, 255, 255, 0.95);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid #e5e5e8;
+  padding: 0.8rem 1.5rem;
+  background: rgba(255, 255, 255, 0.92);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid transparent;
+  transition: border-bottom-color 150ms ease-out;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.85rem 1.5rem;
 }
+.controls.scrolled { border-bottom-color: #ececec; }
 .control-group { display: flex; align-items: center; gap: 0.5rem; }
 .control-label {
   font-size: 11px;
@@ -153,6 +162,7 @@ hr.divider {
 /* charts */
 .chart {
   margin: 1rem 0 1.5rem;
+  padding: 0 24px;
 }
 .chart svg { display: block; max-width: 100%; height: auto; }
 .chart figcaption {
@@ -165,37 +175,38 @@ hr.divider {
 
 .small-multiples {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem 1.25rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem 3rem;
   margin: 1.25rem 0;
 }
-@media (max-width: 720px) {
-  .small-multiples { grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 1100px) {
+  .small-multiples { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
-.sm-tile { min-width: 0; }
-.sm-title {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-weight: 700;
-  color: #232324;
-  margin-bottom: 0.15rem;
+.sm-tile {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.sm-header {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 8px;
+  margin-bottom: 8px;
 }
-.sm-title .product-dot {
-  display: inline-block;
-  width: 9px; height: 9px;
+.sm-dot {
+  width: 8px; height: 8px;
   border-radius: 50%;
-  flex: 0 0 9px;
+  display: inline-block;
+  flex: none;
 }
-.sm-meta {
-  font-size: 0.78rem;
-  color: #8a8a92;
-  margin-bottom: 0.25rem;
-  font-variant-numeric: tabular-nums;
+.sm-title {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: #1a1a22;
+  text-transform: uppercase;
 }
+.sm-plot { width: 100%; }
 
 /* product legend */
 .legend {
@@ -221,14 +232,17 @@ hr.divider {
   margin: 1.5rem 0;
   border-top: 1px solid #e5e5e8;
   border-bottom: 1px solid #e5e5e8;
+  font-variant-numeric: tabular-nums;
 }
 .snapshot-row {
   display: grid;
-  grid-template-columns: 1fr 90px 100px;
-  padding: 0.55rem 0.25rem;
+  grid-template-columns: 1fr 95px 95px 70px;
+  gap: 0.5rem;
+  padding: 0.55rem 0.25rem 0.55rem 0.6rem;
   align-items: baseline;
   border-bottom: 1px solid #f0f0f3;
   font-size: 0.95rem;
+  position: relative;
 }
 .snapshot-row:last-child { border-bottom: 0; }
 .snapshot-row.header {
@@ -237,22 +251,29 @@ hr.divider {
   text-transform: uppercase;
   color: #8a8a92;
   font-weight: 600;
+  padding-left: 0.6rem;
 }
-.snapshot-row .product-name { display: flex; align-items: baseline; gap: 0.5rem; }
-.snapshot-row .product-dot {
-  display: inline-block;
-  width: 10px; height: 10px;
-  border-radius: 50%;
-  flex: 0 0 10px;
+.snapshot-row.header::before { content: none; }
+.snapshot-row.header .val,
+.snapshot-row.header .delta { text-align: right; }
+/* full-row colored bar at the left, abutting the product name */
+.snapshot-row::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--brand-color, transparent);
 }
-.snapshot-row .val { text-align: right; font-variant-numeric: tabular-nums; }
+.snapshot-row .product-name { display: flex; align-items: baseline; }
+.snapshot-row .val { text-align: right; }
 .snapshot-row .delta {
   text-align: right;
-  font-variant-numeric: tabular-nums;
   font-size: 0.85rem;
   color: #50505a;
 }
-.snapshot-row .delta.pos { color: #2c8a4a; }
+.snapshot-row .delta.pos { color: #1a7f4a; }
 .snapshot-row .delta.neg { color: #b8362d; }
 
 .coda {
@@ -264,16 +285,19 @@ hr.divider {
   border-top: 1px solid #e5e5e8;
 }
 .coda code {
-  font-family: 'SF Mono', Monaco, Menlo, monospace;
-  font-size: 0.85em;
-  color: #232324;
-  background: #f4f4f6;
-  padding: 0.05em 0.35em;
-  border-radius: 2px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 1em;
+  color: #50505a;
+  background: transparent;
+  padding: 0;
 }
 .coda p { margin-bottom: 0.35rem; }
-.coda a { color: #2a6cd8; text-decoration: none; border-bottom: 1px dotted #b3c8e8; }
-.coda a:hover { border-bottom-style: solid; }
+.coda a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid #d8d8de;
+}
+.coda a:hover { border-bottom-color: #8a8a92; }
 
 .loading {
   text-align: center;
@@ -312,31 +336,28 @@ hr.divider {
 </div>
 
 <section>
+  <div class="section-eyebrow"><span class="num">01</span>The franchise</div>
   <h2 id="stacked-title">AbbVie global neuroscience revenue by product</h2>
   <p class="subtitle" id="stacked-subtitle">Annual · 2017–2025</p>
-  <p class="muted">The dashed line marks the May 2020 Allergan deal close — Vraylar, Botox Therapeutic and Ubrelvy bands shift from Allergan disclosures to AbbVie disclosures at that point. Totals above the topline are stacked global revenue at that period.</p>
+  <p class="muted">The dashed line marks the May 2020 Allergan deal close — Vraylar, Botox Therapeutic and Ubrelvy bands shift from Allergan disclosures to AbbVie disclosures at that point. Totals above the topline are stacked revenue for that period. In quarterly view the Duodopa band ends at Q3 2025: AbbVie stopped breaking it out as a standalone line after that quarter, likely folding it into Other Neuroscience as it dropped below the standalone-disclosure threshold.</p>
   <figure class="chart" id="chart-stacked"></figure>
-  <div class="legend" id="legend-products"></div>
 </section>
 
-<hr class="divider">
-
 <section>
+  <div class="section-eyebrow"><span class="num">02</span>Product-level detail</div>
   <h2>Product revenue curves</h2>
-  <p class="muted">Each tile has its own y-scale — these are <em>not</em> comparable across products. Switch to <em>Quarterly</em> above to see the Vyalev and Qulipta ramps at quarterly resolution. Q4 is derived as <span style="font-variant-numeric: tabular-nums;">FY − 9M</span>, since neither filer tags a standalone Q4.</p>
+  <p class="muted">Every tile uses constant pixels per year per dollar, anchored to the largest-peak product in view (so Vraylar in Total/U.S., Botox Therapeutic in Ex-U.S.). The visual angle of each curve is the literal $/yr growth rate — a flat-looking line really did grow slowly; a steep one really did grow fast. Switch to <em>Quarterly</em> above to see the Vyalev and Qulipta ramps at quarterly resolution. Q4 is derived as <span style="font-variant-numeric: tabular-nums;">FY − 9M</span>, since neither filer tags a standalone Q4.</p>
   <div class="small-multiples" id="chart-facet"></div>
 </section>
 
-<hr class="divider">
-
 <section>
+  <div class="section-eyebrow"><span class="num">03</span>Latest quarter</div>
   <h2>Latest disclosure</h2>
-  <p class="muted">Most recent quarter on file with year-over-year growth where comparable.</p>
+  <p class="muted">Most recent quarter on file alongside the most recent full fiscal year. YoY compares against the same quarter one year prior.</p>
   <div class="snapshot" id="snapshot"></div>
 </section>
 
 <div class="coda">
-  <p>Source: <code>data/_index/revenue_facts.csv</code> · 1,247 facts · AbbVie + Allergan iXBRL via <code>scripts/extract_revenue.py</code></p>
   <p>Charts rendered with <a href="https://observablehq.com/plot">Observable Plot</a> from raw XBRL extracts of SEC filings 2017–2026Q1.</p>
 </div>
 
@@ -363,11 +384,18 @@ const PRODUCT_COLORS = {
   "Other Neuroscience": "#7d7670",  // warm gray catch-all
 };
 const PRODUCT_ORDER = Object.keys(PRODUCT_COLORS);
-// Stacking order, bottom-up. Biggest at bottom keeps the wave-shape stable.
+// Stacking order, bottom-up. "Other Neuroscience" sits below the launch
+// products so it doesn't slice the new-product wedges; the launch trio
+// (Ubrelvy, Qulipta, Vyalev) stack at the top in launch order.
 const STACK_ORDER = [
-  "Botox Therapeutic", "Vraylar", "Ubrelvy", "Qulipta",
-  "Vyalev", "Duodopa", "Other Neuroscience",
+  "Botox Therapeutic", "Vraylar", "Other Neuroscience",
+  "Duodopa", "Ubrelvy", "Qulipta", "Vyalev",
 ];
+// Products shown in the launch-curve tiles and the latest-disclosure
+// table. "Other Neuroscience" is omitted there — it's a residual bucket
+// whose composition shifts year-to-year, so a single trajectory line
+// doesn't tell a useful story.
+const CURVE_PRODUCTS = PRODUCT_ORDER.filter(p => p !== "Other Neuroscience");
 
 const state = { period: "Annual", geography: "Total" };
 
@@ -382,15 +410,32 @@ const raw = await d3.csv("data/_index/revenue_facts.csv", d => ({
 const facts = raw.filter(r => r.is_current && PRODUCT_COLORS[r.product]);
 
 // Derive Q4 = FY − 9M per (company, product, year, geography).
-const fyMap = new Map();
+// Important: use the most recent NON-derived FY (the actual 10-K
+// disclosure) — not the is_current row, which for 2020 is the stitched
+// Allergan-Q1 + stub + AbbVie-partial value. Subtracting AbbVie's
+// partial-year 9M from a stitched FY would otherwise produce an inflated
+// Q4 2020 (the difference includes Allergan Q1 + stub, which is not
+// Q4 revenue).
+const fyForQ4 = new Map();
+for (const r of raw) {
+  if (!PRODUCT_COLORS[r.product]) continue;
+  if (r.period !== "FY") continue;
+  if (r.source_type === "derived") continue;
+  const k = `${r.company}|${r.product}|${r.fiscal_year}|${r.geography}`;
+  const existing = fyForQ4.get(k);
+  if (!existing || r.filing_date > existing.filing_date) {
+    fyForQ4.set(k, r);
+  }
+}
 const m9Map = new Map();
 for (const r of facts) {
-  const k = `${r.company}|${r.product}|${r.fiscal_year}|${r.geography}`;
-  if (r.period === "FY") fyMap.set(k, r.value_usd_m);
-  if (r.period === "9M") m9Map.set(k, r.value_usd_m);
+  if (r.period === "9M") {
+    m9Map.set(`${r.company}|${r.product}|${r.fiscal_year}|${r.geography}`,
+              r.value_usd_m);
+  }
 }
 const q4 = [];
-for (const [k, fy] of fyMap) {
+for (const [k, fyRow] of fyForQ4) {
   const m9 = m9Map.get(k);
   if (m9 == null) continue;
   const [company, product, year, geography] = k.split("|");
@@ -399,7 +444,7 @@ for (const [k, fy] of fyMap) {
     fiscal_year: +year,
     period: "Q4",
     geography,
-    value_usd_m: fy - m9,
+    value_usd_m: fyRow.value_usd_m - m9,
     is_current: true,
     source_type: "derived (FY − 9M)",
   });
@@ -436,9 +481,9 @@ function fmtUSD(v) {
   return `$${v.toFixed(0)}M`;
 }
 
-const STACKED_HEIGHT = 420;
+const STACKED_HEIGHT = 480;
 const FACET_HEIGHT = 460;
-const CHART_WIDTH = 820;
+const CHART_WIDTH = 920;
 
 function periodLabel(d) {
   const y = d.getFullYear();
@@ -464,9 +509,13 @@ function updateStackedTitle(totalsList) {
 function buildStackedData() {
   let data;
   if (state.period === "Annual") {
+    // Plot annual data at the year midpoint (Jul 1). The default time-axis
+    // ticks land at Jan 1, so mid-year placement puts each FY data point
+    // visually inside its labeled year — and external annotations like the
+    // May 2020 deal-close rule then read at the right calendar position.
     data = collapseByYearGeo(allFacts, "FY").map(r => ({
       ...r,
-      _date: new Date(`${r.fiscal_year}-12-31`),
+      _date: new Date(`${r.fiscal_year}-07-01`),
     }));
   } else {
     const qrows = allFacts.filter(r =>
@@ -515,8 +564,9 @@ function buildStackedData() {
   // previous nonzero value. Handles the Allergan→AbbVie 2020 handoff
   // where a partial-year stub for some geographies nets to zero in our
   // collapse and would otherwise collapse the band mid-series. Rows
-  // before the first nonzero and after the last nonzero stay at 0, so
-  // the launch taper and any post-discontinuation taper still render.
+  // before the first nonzero and after the last nonzero stay at 0 (the
+  // launch taper and any trailing taper render honestly; we don't
+  // fabricate a continuation of the band past the last disclosure).
   const byProduct = new Map();
   for (const r of data) {
     if (!byProduct.has(r.product)) byProduct.set(r.product, []);
@@ -573,43 +623,160 @@ function renderStacked() {
   updateStackedTitle(totalsList);
   if (totalsList.length === 0) return;
 
-  // A few sensible label positions + the right edge.
-  const step = state.period === "Annual" ? 2 : 4;
-  const labeled = totalsList.filter((d, i) => i % step === 0);
+  // Deterministic label cadence: first year, Allergan-close year (2020),
+  // every two years after that, and the rightmost point. Pick the last
+  // data row in each labeled year (matters for quarterly mode where the
+  // year has four entries).
+  const firstYear = totalsList[0].date.getUTCFullYear();
+  const lastYear  = totalsList[totalsList.length - 1].date.getUTCFullYear();
+  const labelYears = new Set([firstYear, 2020, lastYear]);
+  for (let y = 2022; y <= lastYear; y += 2) labelYears.add(y);
+  const lastInYear = new Map();
+  for (const t of totalsList) {
+    const y = t.date.getUTCFullYear();
+    if (labelYears.has(y)) lastInYear.set(y, t);
+  }
+  const labeled = [...lastInYear.values()].sort((a, b) => a.date - b.date);
   const last = totalsList[totalsList.length - 1];
-  if (labeled[labeled.length - 1] !== last) labeled.push(last);
+  // Split rightmost off — it'll render as a separate, larger summary
+  // label so it doesn't crowd the right-edge band labels.
+  const rightmostLabel = labeled[labeled.length - 1];
+  const interiorLabels = labeled.slice(0, -1);
 
-  // Right-edge band labels: cumulative midpoints at last x.
-  const lastT = last.date.getTime();
+  // Right-edge band labels: each label sits at the product's last
+  // nonzero disclosure x. Products with data at the chart's rightmost x
+  // land in the right margin as usual; products that stop earlier (e.g.
+  // Duodopa, last quarterly disclosure Q3 2025) get their label inset at
+  // their actual trailing edge so it has something to anchor to.
   const rightLabels = [];
-  let cum = 0;
   for (const p of STACK_ORDER) {
-    const row = data.find(d => d._date.getTime() === lastT && d.product === p);
-    const v = row ? row.value_usd_m : 0;
-    if (v > 0 && v / last.total_m > 0.025) {
-      rightLabels.push({ date: last.date, y: cum + v / 2, product: p });
+    const series = data
+      .filter(d => d.product === p && d.value_usd_m > 0)
+      .sort((a, b) => a._date.getTime() - b._date.getTime());
+    if (series.length === 0) continue;
+    const lastPoint = series[series.length - 1];
+    const v = lastPoint.value_usd_m;
+    if (v / last.total_m <= 0.018) continue;
+    // Cumulative stack below this product at the label's x.
+    const xT = lastPoint._date.getTime();
+    let cum = 0;
+    for (const otherP of STACK_ORDER) {
+      if (otherP === p) break;
+      const r = data.find(d => d._date.getTime() === xT && d.product === otherP);
+      cum += r ? r.value_usd_m : 0;
     }
-    cum += v;
+    rightLabels.push({ date: lastPoint._date, y: cum + v / 2, product: p });
+  }
+
+  // Symmetric collision resolver: if adjacent labels are within ~14px
+  // (converted to data units via the y-scale's pixel-per-unit ratio),
+  // push them apart. Walks bottom-to-top; the bottom label stays anchored,
+  // labels above cascade upward as needed.
+  const innerH = STACKED_HEIGHT - 64 - 48 - 30; // minus marginTop/Bottom/insetTop
+  const minPxGap = 14;
+  const minDataGap = minPxGap * last.total_m / innerH;
+  rightLabels.sort((a, b) => a.y - b.y);
+  for (let i = 1; i < rightLabels.length; i++) {
+    if (rightLabels[i].y - rightLabels[i - 1].y < minDataGap) {
+      rightLabels[i].y = rightLabels[i - 1].y + minDataGap;
+    }
+  }
+
+  // Interpolate the topline total at the deal-close date so the label can
+  // sit just above the area at that x (rather than in the top margin).
+  const dealCloseDate = new Date("2020-05-08");
+  function interpTotal(t) {
+    if (t <= totalsList[0].date.getTime()) return totalsList[0].total_m;
+    const lastP = totalsList[totalsList.length - 1];
+    if (t >= lastP.date.getTime()) return lastP.total_m;
+    for (let i = 1; i < totalsList.length; i++) {
+      if (totalsList[i].date.getTime() >= t) {
+        const prev = totalsList[i - 1], cur = totalsList[i];
+        const frac = (t - prev.date.getTime()) / (cur.date.getTime() - prev.date.getTime());
+        return prev.total_m + frac * (cur.total_m - prev.total_m);
+      }
+    }
+    return null;
+  }
+  const dealCloseTotal = interpTotal(dealCloseDate.getTime());
+
+  // X-axis convention: tick marks at calendar-year boundaries (Jan 1),
+  // year labels centered between ticks at Jul 1 of each year. Domain is
+  // extended to full calendar years on either side so the boundary ticks
+  // render at both edges.
+  const dataDates = data.map(d => d._date).sort((a, b) => a - b);
+  const domainFirstYear = dataDates[0].getUTCFullYear();
+  const domainLastYear  = dataDates[dataDates.length - 1].getUTCFullYear();
+  const xDomainStacked = [
+    new Date(Date.UTC(domainFirstYear, 0, 1)),
+    new Date(Date.UTC(domainLastYear + 1, 0, 1)),
+  ];
+  const xTicks = [];
+  for (let y = domainFirstYear; y <= domainLastYear + 1; y++) {
+    xTicks.push(new Date(Date.UTC(y, 0, 1)));
+  }
+  // Data extent — used to suppress labels that would otherwise float in
+  // empty margin space at either end (e.g. Q1/Q2 2018 before the first
+  // data point at Q2 2018 = Jun 30, or Q2-Q4 2026 after the last data
+  // point at Q1 2026 = Mar 31).
+  const firstDataDate = dataDates[0];
+  const lastDataDate  = dataDates[dataDates.length - 1];
+  const withinBand = (d) => d >= firstDataDate && d <= lastDataDate;
+
+  // Year labels at Jul 1 normally. When Jul 1 lies outside the band's
+  // coverage within that year (rightmost year with a partial quarter),
+  // recenter the label to the midpoint of the band's portion of that year.
+  const yearCenterLabels = [];
+  for (let y = domainFirstYear; y <= domainLastYear; y++) {
+    const yStart = new Date(Date.UTC(y, 0, 1));
+    const yEnd   = new Date(Date.UTC(y + 1, 0, 1));
+    const bandStart = firstDataDate > yStart ? firstDataDate : yStart;
+    const bandEnd   = lastDataDate  < yEnd   ? lastDataDate  : yEnd;
+    let labelDate = new Date(Date.UTC(y, 6, 1));
+    if (labelDate < bandStart || labelDate > bandEnd) {
+      labelDate = new Date((bandStart.getTime() + bandEnd.getTime()) / 2);
+    }
+    yearCenterLabels.push({ date: labelDate, label: String(y) });
+  }
+  // Quarter labels (Q1/Q2/Q3/Q4) sit between the chart and the year row,
+  // only in quarterly mode. Each is centered at its quarter midpoint, and
+  // dropped if that midpoint falls outside the data extent.
+  const quarterCenterLabels = [];
+  if (state.period === "Quarterly") {
+    const months = [1, 4, 7, 10];
+    const labels = ["Q1", "Q2", "Q3", "Q4"];
+    for (let y = domainFirstYear; y <= domainLastYear; y++) {
+      for (let q = 0; q < 4; q++) {
+        const d = new Date(Date.UTC(y, months[q], 14));
+        if (withinBand(d)) quarterCenterLabels.push({ date: d, label: labels[q] });
+      }
+    }
   }
 
   const chart = Plot.plot({
     width: CHART_WIDTH,
     height: STACKED_HEIGHT,
-    marginLeft: 8,
-    marginBottom: 36,
+    marginLeft: 30,
+    marginBottom: 48,
     marginRight: 130,
-    marginTop: 40,
+    marginTop: 64,
     x: {
-      label: null,
-      tickFormat: d3.timeFormat("%Y"),
+      domain: xDomainStacked,
+      ticks: xTicks,
+      tickFormat: () => "",
+      tickSize: 0,
       grid: false,
     },
-    y: { axis: null, grid: false, insetTop: 22 },
+    y: { axis: null, grid: false, insetTop: 30 },
     color: {
       domain: PRODUCT_ORDER,
       range: PRODUCT_ORDER.map(p => PRODUCT_COLORS[p]),
     },
-    style: { fontFamily: "Brandon Grotesque, system-ui, sans-serif", fontSize: 12, color: "#232324" },
+    style: {
+      fontFamily: "Brandon Grotesque, system-ui, sans-serif",
+      fontSize: 13, color: "#232324",
+      fontVariantNumeric: "tabular-nums",
+    },
     marks: [
       // No per-row `title` here: a per-row title channel forces Plot to
       // fragment the area into one polygon per (x_i, x_{i+1}) segment so
@@ -622,6 +789,28 @@ function renderStacked() {
         y: "value_usd_m",
         fill: "product",
         curve: "linear",
+      }),
+      // Quarter labels (Q1/Q2/Q3/Q4) sit just below the chart, only
+      // in quarterly mode. Centered on each quarter's midpoint.
+      Plot.text(quarterCenterLabels, {
+        x: "date",
+        text: "label",
+        frameAnchor: "bottom",
+        dy: 12,
+        fontSize: 10,
+        fontWeight: 500,
+        fill: "#8a8a92",
+      }),
+      // Year labels centered between Jan-1 boundary positions, on a
+      // second row below the quarter labels (or alone in annual mode).
+      Plot.text(yearCenterLabels, {
+        x: "date",
+        text: "label",
+        frameAnchor: "bottom",
+        dy: 30,
+        fontSize: 13,
+        fontWeight: 500,
+        fill: "#232324",
       }),
       // Hover targets, drawn invisibly. One dot per real disclosure;
       // Plot.pointer picks the closest and renders the tooltip. Synthetic
@@ -636,37 +825,60 @@ function renderStacked() {
           title: d => `${d.product}\n${d.fiscal_year} ${d.period}\n${fmtUSD(d.value_usd_m)}\n${d.company} ${d.source_type}`,
         })
       ),
-      // Deal-close annotation
-      Plot.ruleX([new Date("2020-05-08")], {
-        stroke: "#1f1a14", strokeDasharray: "3 4", strokeOpacity: 0.55,
+      // Deal-close annotation. Light dashed rule as secondary; label is
+      // primary, sits just above the topline at the deal-close x, anchored
+      // to the right edge so it ends just left of the rule.
+      Plot.ruleX([dealCloseDate], {
+        stroke: "#b8b8c0", strokeDasharray: "3 3", strokeOpacity: 0.85, strokeWidth: 1,
       }),
       Plot.text(
-        [{ x: new Date("2020-05-08"), label: "Allergan deal close · May 2020" }],
-        { x: "x", text: "label", frameAnchor: "bottom",
-          dx: -5, dy: -8, textAnchor: "end",
-          fontSize: 10.5, fill: "#50505a" }
+        [{ x: dealCloseDate, y: dealCloseTotal, label: "Allergan deal close · May 2020" }],
+        { x: "x", y: "y", text: "label",
+          dy: -28, dx: -4, textAnchor: "end",
+          fontSize: 11.5, fontWeight: 500,
+          fill: "#1F1A14", fillOpacity: 0.6 }
       ),
-      // $B totals above the topline
-      Plot.text(labeled, {
+      // $B totals above the topline — interior labels at deterministic
+      // cadence (first, 2020, every 2yr, rightmost is handled separately).
+      // White halo via paintOrder so they read clearly above the bands.
+      Plot.text(interiorLabels, {
+        x: "date", y: "total_m",
+        text: d => `$${(d.total_m / 1000).toFixed(1)}B`,
+        dy: -12, textAnchor: "middle",
+        fontSize: 13, fontWeight: 600, fill: "#1F1A14",
+        stroke: "white", strokeWidth: 3, paintOrder: "stroke",
+      }),
+      // Rightmost total: lifted as a summary above the chart's top, larger
+      // and heavier so it reads as a headline rather than a band label.
+      Plot.text([rightmostLabel], {
         x: "date",
         y: "total_m",
         text: d => `$${(d.total_m / 1000).toFixed(1)}B`,
-        dy: -10,
-        textAnchor: "middle",
-        fontSize: 11.5,
-        fontWeight: 600,
-        fill: "#232324",
+        dy: -20,
+        textAnchor: "end",
+        fontSize: 15,
+        fontWeight: 700,
+        fill: "#1F1A14",
       }),
-      // Right-edge band labels
+      // Right-edge band labels. "Botox" is short for "Botox Therapeutic"
+      // (the chart's about neuro, so the qualifier is implied). White
+      // halo via paintOrder makes the label legible when it lands
+      // inside the chart (e.g. Duodopa inset at Q3 2025) instead of in
+      // the right margin.
       Plot.text(rightLabels, {
         x: "date",
         y: "y",
-        text: "product",
+        text: d => d.product === "Botox Therapeutic" ? "Botox"
+                 : d.product === "Other Neuroscience" ? "Other"
+                 : d.product,
         dx: 8,
         textAnchor: "start",
-        fontSize: 11,
+        fontSize: 12,
         fontWeight: 600,
         fill: d => PRODUCT_COLORS[d.product],
+        stroke: "white",
+        strokeWidth: 3,
+        paintOrder: "stroke",
       }),
     ],
   });
@@ -677,13 +889,13 @@ function renderFacet() {
   const container = document.getElementById("chart-facet");
   container.innerHTML = "";
 
-  // Get the same dataset as the stacked area uses, then split per product
-  // so each gets its own Plot with an independent y-scale.
+  // Source data per current period filter. Tiles take their own per-product
+  // window (launch → latest) — x-domain is NOT shared across tiles.
   let data;
   if (state.period === "Annual") {
     data = collapseByYearGeo(allFacts, "FY").map(r => ({
       ...r,
-      _date: new Date(`${r.fiscal_year}-12-31`),
+      _date: new Date(`${r.fiscal_year}-07-01`),
     }));
   } else {
     const qrows = allFacts.filter(r => ["Q1","Q2","Q3","Q4"].includes(r.period) && r.geography === state.geography);
@@ -699,122 +911,226 @@ function renderFacet() {
   }
   data = data.filter(r => r._date != null);
 
-  for (const product of PRODUCT_ORDER) {
-    const pdata = data.filter(d => d.product === product).sort((a, b) => a._date - b._date);
+  // Slope anchor: yTop_i = slopeRatio × tile_years_i × headroom.
+  // Per-tile x-domain means pixels/year varies, so yTop must scale with
+  // tile_years to keep pixels-per-year-per-dollar constant — the same
+  // $/yr then renders at the same visual angle in every tile.
+  //
+  // Anchor on the largest-peak product *in the current geography view*,
+  // so the choice adapts to the data on screen. (A static "anchor on
+  // Vraylar" would break Ex-US, where Vraylar barely sells — its tiny
+  // peak makes slopeRatio so small that Botox Therapeutic's curve shoots
+  // off the top of its tile.)
+  const MS_PER_YEAR = 365.25 * 24 * 3600 * 1000;
+  let slopeRatio = null;
+  for (const p of CURVE_PRODUCTS) {
+    const rs = data
+      .filter(r => r.product === p && r.value_usd_m > 0)
+      .sort((a, b) => a._date - b._date);
+    if (rs.length < 2) continue;
+    const peak = Math.max(...rs.map(r => r.value_usd_m));
+    const yrs  = (rs.at(-1)._date - rs[0]._date) / MS_PER_YEAR;
+    if (yrs > 0 && (slopeRatio == null || peak / yrs > slopeRatio)) {
+      slopeRatio = peak / yrs;
+    }
+  }
+
+  for (const product of CURVE_PRODUCTS) {
+    // Only real nonzero disclosures. Each product's curve starts at its
+    // actual launch value (no zero-prepended taper): Qulipta begins at
+    // $158M (FY2022), Ubrelvy at $552M (FY2021), etc.
+    const pdata = data
+      .filter(d => d.product === product && d.value_usd_m > 0)
+      .sort((a, b) => a._date - b._date);
+    if (!pdata.length) continue;
+
+    const x0 = pdata[0]._date;
+    const x1 = pdata.at(-1)._date;
+    const tileYears = Math.max(1, (x1 - x0) / MS_PER_YEAR);
+    const yTop = slopeRatio != null ? slopeRatio * tileYears * 1.15 : null;
+
+    // Tile shell — direct child of #chart-facet so the grid lays out.
     const tile = document.createElement("div");
     tile.className = "sm-tile";
-    const title = document.createElement("div");
+
+    const head = document.createElement("div");
+    head.className = "sm-header";
+    const swatch = document.createElement("span");
+    swatch.className = "sm-dot";
+    swatch.style.background = PRODUCT_COLORS[product];
+    const title = document.createElement("span");
     title.className = "sm-title";
-    title.innerHTML = `<span class="product-dot" style="background:${PRODUCT_COLORS[product]}"></span>${product}`;
-    tile.appendChild(title);
+    const shortName = product === "Botox Therapeutic" ? "BOTOX"
+                    : product === "Other Neuroscience" ? "OTHER"
+                    : product.toUpperCase();
+    title.textContent = shortName;
+    head.append(swatch, title);
+    tile.appendChild(head);
 
-    const meta = document.createElement("div");
-    meta.className = "sm-meta";
-    if (pdata.length > 0) {
-      const last = pdata[pdata.length - 1];
-      const lastLabel = state.period === "Annual"
-        ? `${last.fiscal_year} FY`
-        : `${last.fiscal_year} ${last.period}`;
-      meta.textContent = `${lastLabel}: ${fmtUSD(last.value_usd_m)}`;
-    } else {
-      meta.textContent = "no data";
-    }
-    tile.appendChild(meta);
-
-    if (pdata.length === 0) {
-      container.appendChild(tile);
-      continue;
-    }
+    const plotWrap = document.createElement("div");
+    plotWrap.className = "sm-plot";
+    tile.appendChild(plotWrap);
+    container.appendChild(tile);
 
     const color = PRODUCT_COLORS[product];
-    const plot = Plot.plot({
-      width: 200,
-      height: 110,
-      marginLeft: 38,
-      marginBottom: 22,
-      marginTop: 6,
-      marginRight: 8,
-      x: { tickFormat: d3.timeFormat("%y"), label: null, ticks: 4 },
-      y: { label: null, grid: true, insetTop: 4, tickFormat: v => v >= 1000 ? `${(v/1000).toFixed(1)}k` : `${v}` },
-      style: { fontFamily: "Brandon Grotesque, system-ui, sans-serif", fontSize: 10, color: "#50505a" },
-      marks: [
-        Plot.ruleY([0], { stroke: "#e5e5e8" }),
-        Plot.lineY(pdata, {
-          x: "_date", y: "value_usd_m",
-          stroke: color, strokeWidth: 1.8, curve: "monotone-x",
-        }),
-        Plot.dot(pdata, {
-          x: "_date", y: "value_usd_m",
-          fill: color, r: 2,
-          title: d => `${product}\n${d.fiscal_year} ${d.period}\n${fmtUSD(d.value_usd_m)}`,
-        }),
-      ],
-    });
-    tile.appendChild(plot);
-    container.appendChild(tile);
-  }
-}
 
-function renderLegend() {
-  const el = document.getElementById("legend-products");
-  el.innerHTML = PRODUCT_ORDER.map(p =>
-    `<span><span class="swatch" style="color:${PRODUCT_COLORS[p]}"></span>${p}</span>`
-  ).join("");
+    const renderInto = () => {
+      const w = plotWrap.clientWidth;
+      if (!w) return;
+      plotWrap.replaceChildren();
+
+      const first = pdata[0];
+      const last  = pdata.at(-1);
+      const xTicks = [first._date, last._date];
+      const plotH = Math.max(140, Math.round(w * 0.5));
+
+      const endPeriod = state.period === "Annual"
+        ? `FY ${last.fiscal_year}`
+        : `${last.fiscal_year} ${last.period}`;
+
+      const plot = Plot.plot({
+        width: w, height: plotH,
+        marginLeft: 6, marginRight: 72, marginTop: 24, marginBottom: 22,
+        x: {
+          domain: [x0, x1],
+          ticks: xTicks,
+          tickFormat: d3.utcFormat("%Y"),
+          tickSize: 0,
+          label: null,
+        },
+        y: yTop != null
+          ? { axis: null, domain: [0, yTop], insetTop: 4, insetBottom: 2 }
+          : { axis: null, insetTop: 4 },
+        style: {
+          fontFamily: "Brandon Grotesque, system-ui, sans-serif",
+          fontSize: 10, color: "#50505a",
+          fontVariantNumeric: "tabular-nums",
+          overflow: "visible",
+        },
+        marks: [
+          Plot.ruleY([0], { stroke: "#e5e5e8" }),
+          Plot.lineY(pdata, {
+            x: "_date", y: "value_usd_m",
+            stroke: color, strokeWidth: 1.8, curve: "monotone-x",
+          }),
+          Plot.dot([last], {
+            x: "_date", y: "value_usd_m",
+            fill: color, r: 3.5,
+            title: d => `${product}\n${endPeriod}\n${fmtUSD(d.value_usd_m)}`,
+          }),
+          // Start label — band color, weight 600, above the curve, with
+          // white halo so it stays readable wherever the line crosses.
+          Plot.text([first], {
+            x: "_date", y: "value_usd_m",
+            text: d => fmtUSD(d.value_usd_m),
+            dx: 4, dy: -10, textAnchor: "start",
+            fontSize: 12, fontWeight: 600, fill: color,
+            stroke: "white", strokeWidth: 2.5, paintOrder: "stroke",
+          }),
+          // End label — current value, set to the right of the dot.
+          Plot.text([last], {
+            x: "_date", y: "value_usd_m",
+            text: d => fmtUSD(d.value_usd_m),
+            dx: 9, dy: -3, textAnchor: "start",
+            fontSize: 12, fontWeight: 600, fill: color,
+          }),
+          // End period label, below the value, gray.
+          Plot.text([last], {
+            x: "_date", y: "value_usd_m",
+            text: () => endPeriod,
+            dx: 9, dy: 10, textAnchor: "start",
+            fontSize: 9, fill: "#8a8a92",
+          }),
+        ],
+      });
+      plot.style.display = "block";
+      plotWrap.appendChild(plot);
+    };
+
+    const ro = new ResizeObserver(() => {
+      cancelAnimationFrame(tile.__raf);
+      tile.__raf = requestAnimationFrame(renderInto);
+    });
+    ro.observe(plotWrap);
+    renderInto();
+  }
 }
 
 function renderSnapshot() {
-  // Most recent quarter (max date among Q1/Q2/Q3 with explicit reporting) for current geography.
-  const qRows = allFacts.filter(r =>
-    ["Q1","Q2","Q3"].includes(r.period) && r.geography === state.geography
-  );
-  if (qRows.length === 0) return;
-  // For each (product, year, period) prefer AbbVie
-  const out = new Map();
-  for (const r of qRows) {
-    const k = `${r.product}|${r.fiscal_year}|${r.period}`;
-    const existing = out.get(k);
-    if (!existing || (r.company === "abbvie" && existing.company !== "abbvie")) {
-      out.set(k, r);
+  // Helper: collapse multi-company rows, preferring AbbVie.
+  function collapsePreferAbbvie(rs) {
+    const out = new Map();
+    for (const r of rs) {
+      const k = `${r.product}|${r.fiscal_year}|${r.period}`;
+      const existing = out.get(k);
+      if (!existing || (r.company === "abbvie" && existing.company !== "abbvie")) {
+        out.set(k, r);
+      }
     }
+    return [...out.values()];
   }
-  const rows = [...out.values()];
-  // Sort by date desc, find the latest quarter that has at least 3 products reported
-  const grouped = d3.group(rows, r => `${r.fiscal_year}|${r.period}`);
-  let latestKey = null, latestDate = -Infinity;
-  for (const [k, grp] of grouped) {
+
+  // --- Most recent quarter (Q1/Q2/Q3 only — Q4 isn't tagged) ---
+  const qRows = collapsePreferAbbvie(
+    allFacts.filter(r => ["Q1","Q2","Q3"].includes(r.period) && r.geography === state.geography
+                     && r.product !== "Other Neuroscience")
+  );
+  const qGrouped = d3.group(qRows, r => `${r.fiscal_year}|${r.period}`);
+  let latestQKey = null, latestQDate = -Infinity;
+  for (const [k, grp] of qGrouped) {
     if (grp.length < 3) continue;
     const [y, p] = k.split("|");
     const dt = quarterDate(+y, p).getTime();
-    if (dt > latestDate) { latestDate = dt; latestKey = k; }
+    if (dt > latestQDate) { latestQDate = dt; latestQKey = k; }
   }
-  if (!latestKey) return;
-  const [latestYear, latestPeriod] = latestKey.split("|");
-  const yPrior = +latestYear - 1;
-  const currentRows = grouped.get(latestKey);
-  const priorRows = grouped.get(`${yPrior}|${latestPeriod}`) ?? [];
-  const priorMap = new Map(priorRows.map(r => [r.product, r.value_usd_m]));
+  if (!latestQKey) return;
+  const [latestQYear, latestQPeriod] = latestQKey.split("|");
+  const qCurrent = new Map(qGrouped.get(latestQKey).map(r => [r.product, r.value_usd_m]));
+  const qPrior = new Map((qGrouped.get(`${+latestQYear - 1}|${latestQPeriod}`) ?? [])
+    .map(r => [r.product, r.value_usd_m]));
 
+  // --- Most recent FY ---
+  const fyRows = collapsePreferAbbvie(
+    allFacts.filter(r => r.period === "FY" && r.geography === state.geography
+                     && r.product !== "Other Neuroscience")
+  );
+  const fyGrouped = d3.group(fyRows, r => `${r.fiscal_year}`);
+  let latestFyYear = null;
+  for (const [k, grp] of fyGrouped) {
+    if (grp.length < 3) continue;
+    const yr = +k;
+    if (latestFyYear == null || yr > +latestFyYear) latestFyYear = k;
+  }
+  const fyCurrent = latestFyYear
+    ? new Map(fyGrouped.get(latestFyYear).map(r => [r.product, r.value_usd_m]))
+    : new Map();
+
+  // Union of products that appeared in either window, in canonical order.
+  const products = CURVE_PRODUCTS.filter(p => qCurrent.has(p) || fyCurrent.has(p));
+
+  const geoLabel = state.geography === "Total" ? "Total" :
+                   state.geography === "US"    ? "U.S."  : "ex-U.S.";
   const el = document.getElementById("snapshot");
   let html = `<div class="snapshot-row header">
-    <div>${latestYear} ${latestPeriod} · ${state.geography === "Total" ? "Total revenue" : state.geography + " revenue"}</div>
-    <div class="val">$M</div>
-    <div class="delta">YoY</div>
+    <div>${geoLabel} revenue</div>
+    <div class="val">${latestFyYear ?? "—"} FY</div>
+    <div class="val">${latestQYear} ${latestQPeriod}</div>
+    <div class="delta">YoY Q</div>
   </div>`;
-  currentRows.sort((a, b) => PRODUCT_ORDER.indexOf(a.product) - PRODUCT_ORDER.indexOf(b.product));
-  for (const r of currentRows) {
-    const prior = priorMap.get(r.product);
+  for (const p of products) {
+    const fyV = fyCurrent.get(p);
+    const qV  = qCurrent.get(p);
+    const qPriorV = qPrior.get(p);
     let deltaStr = "—", deltaClass = "";
-    if (prior != null && prior > 0) {
-      const pct = (r.value_usd_m - prior) / prior * 100;
+    if (qPriorV != null && qPriorV > 0 && qV != null) {
+      const pct = (qV - qPriorV) / qPriorV * 100;
       deltaStr = `${pct >= 0 ? "+" : ""}${pct.toFixed(0)}%`;
       deltaClass = pct >= 0 ? "pos" : "neg";
     }
-    html += `<div class="snapshot-row">
-      <div class="product-name">
-        <span class="product-dot" style="background:${PRODUCT_COLORS[r.product]}"></span>
-        ${r.product}
-      </div>
-      <div class="val">${fmtUSD(r.value_usd_m)}</div>
+    html += `<div class="snapshot-row" style="--brand-color:${PRODUCT_COLORS[p]}">
+      <div class="product-name">${p}</div>
+      <div class="val">${fyV != null ? fmtUSD(fyV) : "—"}</div>
+      <div class="val">${qV  != null ? fmtUSD(qV)  : "—"}</div>
       <div class="delta ${deltaClass}">${deltaStr}</div>
     </div>`;
   }
@@ -827,7 +1143,6 @@ function render() {
   renderSnapshot();
 }
 
-renderLegend();
 render();
 document.getElementById("loading").remove();
 
@@ -842,6 +1157,15 @@ document.querySelectorAll(".toggle").forEach(group => {
     });
   });
 });
+
+// Filter-bar hairline border only shows once the user has scrolled past
+// the top of the page; on page top the bar reads as part of the hero.
+const controlsEl = document.querySelector(".controls");
+function updateControlsBorder() {
+  controlsEl.classList.toggle("scrolled", window.scrollY > 0);
+}
+window.addEventListener("scroll", updateControlsBorder, { passive: true });
+updateControlsBorder();
 </script>
 
 </body>
