@@ -602,15 +602,339 @@ footer.coda code {
   color: #6b6b72;
 }
 .conf-legend .li { display: inline-flex; align-items: center; gap: 0.4rem; }
+
+/* ─── standing disclosure banner — top + footer ──────────────────────── */
+.disclosure {
+  background: #fdf9ec;
+  border-bottom: 1px solid #ece4cd;
+  color: #4a4538;
+  font-size: 12.5px;
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+  text-align: center;
+  padding: 0.7rem 1.5rem;
+}
+.disclosure .label {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #8a7a44;
+  margin-right: 0.7em;
+  padding: 0.05em 0.55em;
+  background: #f4ead0;
+  border-radius: 3px;
+  vertical-align: 0.06em;
+}
+.disclosure-footer {
+  margin-top: 2rem;
+  padding: 1rem 1.1rem;
+  background: #FBFAF7;
+  border: 1px solid #ece4cd;
+  border-left: 3px solid #c9b574;
+  border-radius: 6px;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: #4a4538;
+  text-align: left;
+}
+.disclosure-footer .label {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #8a7a44;
+  margin-right: 0.6em;
+}
+
+/* ─── Findings: top-level exec-summary section ───────────────────────── */
+#findings { margin-top: 0; }
+#findings .section-eyebrow { margin-top: 0; }
+#findings > .findings-lede {
+  font-size: 1rem;
+  color: #4a4a52;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  max-width: 62ch;
+}
+
+.finding {
+  display: grid;
+  grid-template-columns: 1.1fr 0.95fr;
+  gap: 0 2.1rem;
+  padding: 1.55rem 1.6rem 1.35rem;
+  margin-bottom: 1.1rem;
+  background: #ffffff;
+  border: 1px solid #ECE7DC;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.025), 0 6px 18px rgba(0,0,0,0.025);
+  transition: border-color 120ms, box-shadow 120ms;
+}
+.finding:hover {
+  border-color: #d6cfb6;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.035), 0 10px 24px rgba(0,0,0,0.04);
+}
+.finding > .head { display: flex; flex-direction: column; min-width: 0; }
+.finding .f-num {
+  font-size: 9.5px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #a8a497;
+  margin-bottom: 0.85rem;
+}
+.finding .f-num strong { color: #1a1a1f; font-weight: 700; }
+.finding h3 {
+  font-family: 'Brandon Grotesque', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.22rem;
+  line-height: 1.18;
+  letter-spacing: -0.005em;
+  color: #1a1a1f;
+  text-transform: none;
+  margin: 0 0 0.6rem;
+}
+.finding h3 em { color: #4d2680; font-style: italic; }
+.finding .frame {
+  font-size: 0.94rem;
+  line-height: 1.5;
+  color: #4a4a52;
+  margin-bottom: 0.85rem;
+  flex: 1;
+}
+.finding .frame strong { color: #1a1a1f; font-weight: 700; }
+.finding .frame em { color: #1a1a1f; font-style: italic; }
+.finding > .head footer.prov {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.85rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #f0ece0;
+  font-size: 10px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: #8a8a92;
+  font-weight: 600;
+}
+.finding > .head footer.prov .src { color: #6b6b72; }
+.finding > .head footer.prov .goto {
+  color: #1a1a1f;
+  text-decoration: none;
+  border-bottom: 1px dotted #b8b3a3;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+.finding > .head footer.prov .goto:hover { border-bottom-style: solid; }
+
+/* exhibit column on the right of each finding */
+.finding > .exhibit {
+  padding-left: 2.1rem;
+  border-left: 1px solid #f0ece0;
+  min-width: 0;
+}
+.finding .ex-label {
+  font-size: 9.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #8a8a92;
+  margin-bottom: 0.55rem;
+}
+
+/* shared exhibit row: year tag + content */
+.ex-row {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 0.6rem;
+  padding: 0.32rem 0;
+  border-bottom: 1px solid #f6f3e9;
+  font-size: 0.86rem;
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+}
+.ex-row:last-child { border-bottom: 0; }
+.ex-row .yr {
+  color: #8a8a92;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 0.76rem;
+  align-self: baseline;
+  padding-top: 0.06rem;
+}
+.ex-row .txt { color: #232324; }
+.ex-row .txt strong { color: #1a1a1f; font-weight: 700; }
+.ex-row .txt em { color: #4d2680; font-style: italic; font-weight: 600; }
+.ex-row.add .txt { color: #1d6e36; }
+.ex-row.add .txt strong { color: #1d6e36; }
+.ex-row.drop .txt { color: #8a8a92; }
+.ex-row.drop .txt s { text-decoration-color: #d9b5b1; }
+.ex-row .pct { float: right; color: #6b6b72; font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 0.78rem; }
+
+/* secondary block inside an exhibit (under-line divider) */
+.ex-block {
+  margin-top: 0.7rem;
+  padding-top: 0.55rem;
+  border-top: 1px dashed #ece8df;
+}
+
+/* deal list (finding 06) */
+.deal-list { font-size: 0.86rem; line-height: 1.4; }
+.deal-list .deal-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  column-gap: 0.6rem;
+  padding: 0.34rem 0;
+  border-bottom: 1px solid #f6f3e9;
+  align-items: baseline;
+}
+.deal-list .deal-row:last-child { border-bottom: 0; }
+.deal-list .deal-name { color: #232324; font-weight: 600; }
+.deal-list .deal-name small { color: #8a8a92; font-weight: 400; font-size: 0.82em; margin-left: 0.35em; }
+.deal-list .deal-size {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 0.76rem;
+  color: #6b6b72;
+  font-variant-numeric: tabular-nums;
+}
+.deal-list .deal-cat {
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 0.1em 0.5em;
+  border-radius: 2px;
+  margin-left: 0.5em;
+}
+.deal-list .deal-cat.neuro { color: #4d2680; background: #efe4f7; }
+.deal-list .deal-cat.onc   { color: #b76b27; background: #fbf0dc; }
+
+/* TA chip list (finding 05) */
+.ta-list { font-size: 0.86rem; }
+.ta-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid #f6f3e9;
+}
+.ta-line:last-child { border-bottom: 0; }
+.ta-line .ta-year-label {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 0.74rem;
+  color: #8a8a92;
+  font-weight: 700;
+  margin-right: 0.35rem;
+}
+.ta-chip {
+  display: inline-block;
+  font-size: 0.76rem;
+  padding: 0.12em 0.6em;
+  border-radius: 999px;
+  background: #F3F1EC;
+  color: #4a4a52;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.ta-chip.rank-up { background: #efe4f7; color: #4d2680; font-weight: 700; }
+.ta-chip.dropped { background: #ffffff; color: #a8554d; text-decoration: line-through; text-decoration-color: #d9b5b1; border: 1px dashed #e2bdb8; }
+
+/* before/after columns for finding 03 */
+.beforeafter { font-size: 0.86rem; line-height: 1.45; }
+.beforeafter .ba-block { padding: 0.55rem 0; border-bottom: 1px solid #f6f3e9; }
+.beforeafter .ba-block:last-child { border-bottom: 0; }
+.beforeafter .ba-when {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  color: #8a8a92;
+  font-weight: 700;
+  margin-bottom: 0.18rem;
+}
+.beforeafter .ba-formula { color: #232324; }
+.beforeafter .ba-formula .key { font-weight: 700; color: #4d2680; }
+.beforeafter .ba-formula s { color: #a8554d; text-decoration-color: #d9b5b1; }
+
+/* cross-cutting callout */
+.cross-cutting {
+  margin-top: 1.4rem;
+  padding: 1.25rem 1.4rem 1.1rem;
+  background: #F8F5EC;
+  border: 1px solid #ECE7DC;
+  border-left: 3px solid #b8b3a3;
+  border-radius: 8px;
+}
+.cross-cutting .cc-label {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #8a8a92;
+  margin-bottom: 0.45rem;
+}
+.cross-cutting .cc-body {
+  font-size: 0.96rem;
+  line-height: 1.55;
+  color: #2a2a30;
+  margin-bottom: 0.7rem;
+}
+.cross-cutting .cc-body strong { color: #1a1a1f; }
+.cross-cutting .cc-body em { font-style: italic; }
+.cross-cutting footer.prov {
+  font-size: 10px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: #8a8a92;
+  font-weight: 600;
+  padding-top: 0.55rem;
+  border-top: 1px solid #ece8df;
+}
+
+.findings-closing {
+  margin-top: 1.6rem;
+  font-size: 0.84rem;
+  color: #8a8a92;
+  font-style: italic;
+  text-align: center;
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+}
+.findings-closing a {
+  color: inherit;
+  border-bottom: 1px dotted #c0bdb0;
+  text-decoration: none;
+}
+.findings-closing a:hover { border-bottom-style: solid; }
+
+/* findings collapse to single column at narrow viewports */
+@media (max-width: 760px) {
+  .finding { grid-template-columns: 1fr; padding: 1.2rem 1.1rem; }
+  .finding > .exhibit {
+    padding-left: 0;
+    padding-top: 1rem;
+    margin-top: 1rem;
+    border-left: 0;
+    border-top: 1px solid #f0ece0;
+  }
+}
 </style>
 </head>
 <body>
+
+<div class="disclosure" role="note">
+  <span class="label">Disclosure</span>Nick Strehlke is a director at AbbVie. This analysis is entirely outside-in, built solely from public EDGAR filings. Nothing here is investment advice.
+</div>
 
 <div class="layout">
 
 <nav class="side" aria-label="Section navigation">
   <div class="nav-eyebrow">Sections</div>
   <ol id="toc">
+    <li><a href="#findings"><span class="num"></span>Findings</a></li>
     <li><a href="#timeline"><span class="num">01</span>Narrative timeline</a></li>
     <li><a href="#migration"><span class="num">02</span>Concept migration</a></li>
     <li><a href="#evolution"><span class="num">03</span>Concept evolution</a></li>
@@ -636,6 +960,280 @@ footer.coda code {
     <span class="li"><span class="conf conf-speculative">Speculative</span> hypothesis not directly evidenced</span>
   </div>
 </header>
+
+
+<!-- ────────────────────────────────────────────────────────────────────── -->
+<!-- Findings — executive summary                                            -->
+<!-- ────────────────────────────────────────────────────────────────────── -->
+<section id="findings">
+  <div class="section-eyebrow">Findings &mdash; an executive summary</div>
+  <h2>Eight observations the corpus surfaced</h2>
+  <p class="findings-lede">A reader who reads only this section should still get the load-bearing points. Each card links to where it's developed in the body and to the filings it rests on.</p>
+
+  <!-- Finding 01 — the dividend invariant -->
+  <article class="finding" id="f01">
+    <div class="head">
+      <div class="f-num">Finding · <strong>01</strong></div>
+      <h3>The dividend never moves. The clause around it does.</h3>
+      <p class="frame">Eight years of strategic objectives, same dividend &mdash; six different tails. Share repurchases vanish; debt paydown arrives, sharpens, then softens to credit-rating preservation.</p>
+      <footer class="prov">
+        <span class="conf conf-direct">Direct</span>
+        <span class="src">8 &times; 10-K, Item 7</span>
+        <a class="goto" href="#invariants">&rarr; &sect;04 Invariants</a>
+      </footer>
+    </div>
+    <aside class="exhibit">
+      <div class="ex-label">The dividend clause, year by year</div>
+      <div class="ex-row"><span class="yr">FY18</span><span class="txt">dividends + share repurchases</span></div>
+      <div class="ex-row"><span class="yr">FY19</span><span class="txt"><strong>+ reducing incremental debt</strong></span></div>
+      <div class="ex-row"><span class="yr">FY20</span><span class="txt">reducing debt</span></div>
+      <div class="ex-row"><span class="yr">FY21&ndash;22</span><span class="txt">&nbsp;&nbsp;&prime;&prime;</span></div>
+      <div class="ex-row"><span class="yr">FY23&ndash;24</span><span class="txt"><strong>continuing to repay debt</strong></span></div>
+      <div class="ex-row"><span class="yr">FY25</span><span class="txt"><strong>maintaining a strong investment grade credit rating</strong></span></div>
+    </aside>
+  </article>
+
+  <!-- Finding 02 — Humira drops from named-product risk sentence -->
+  <article class="finding" id="f02">
+    <div class="head">
+      <div class="f-num">Finding · <strong>02</strong></div>
+      <h3>Humira fell off the named-product risk sentence.</h3>
+      <p class="frame">The Item&nbsp;1A product-concentration sentence uses the same template for eight years. Only the names rotate. By FY2025, Humira is no longer in it.</p>
+      <footer class="prov">
+        <span class="conf conf-direct">Direct</span>
+        <span class="src">8 &times; 10-K, Item 1A</span>
+        <a class="goto" href="#timeline">&rarr; &sect;01</a>
+        <a class="goto" href="#invariants">&sect;04</a>
+      </footer>
+    </div>
+    <aside class="exhibit">
+      <div class="ex-label">The risk sentence, named products</div>
+      <div class="ex-row"><span class="yr">FY18</span><span class="txt"><strong>HUMIRA</strong> <span class="pct">61%</span></span></div>
+      <div class="ex-row"><span class="yr">FY21</span><span class="txt"><strong>Humira</strong> <span class="pct">37%</span></span></div>
+      <div class="ex-row"><span class="yr">FY23</span><span class="txt"><strong>Humira</strong> <span class="pct">27%</span></span></div>
+      <div class="ex-row"><span class="yr">FY24</span><span class="txt"><strong>Skyrizi, Humira, Rinvoq</strong> <span class="pct">47%</span></span></div>
+      <div class="ex-row add"><span class="yr">FY25</span><span class="txt"><strong>Skyrizi, Rinvoq</strong> <span class="pct">42%</span></span></div>
+      <div class="ex-block" style="font-size: 0.78rem; color: #8a8a92; line-height: 1.4;">
+        Same sentence template. New names. Humira disappears.
+      </div>
+    </aside>
+  </article>
+
+  <!-- Finding 03 — Platform Revenue / executive comp -->
+  <article class="finding" id="f03">
+    <div class="head">
+      <div class="f-num">Finding · <strong>03</strong></div>
+      <h3>Executives are paid on revenue minus Humira.</h3>
+      <p class="frame">In 2022 &mdash; the year U.S. biosimilars entered the Humira market &mdash; the annual incentive metric was rewritten to <em>exclude</em> Humira sales. Peers like Bristol Myers Squibb report a similar &ldquo;Growth Portfolio&rdquo; split externally; AbbVie wired the construct directly into the C-suite paycheck.</p>
+      <footer class="prov">
+        <span class="conf conf-direct">Direct</span>
+        <span class="src">2023 DEF14A, CD&amp;A</span>
+        <a class="goto" href="#compensation">&rarr; &sect;08 Compensation</a>
+      </footer>
+    </div>
+    <aside class="exhibit">
+      <div class="ex-label">AIP financial metrics, before &amp; after</div>
+      <div class="beforeafter">
+        <div class="ba-block">
+          <div class="ba-when">FY2018 &ndash; FY2021</div>
+          <div class="ba-formula">Net Revenues &nbsp;+&nbsp; Income Before Taxes &nbsp;+&nbsp; <s>Humira sales</s> sub-metric</div>
+        </div>
+        <div class="ba-block">
+          <div class="ba-when">FY2022 onward &nbsp;<span style="color:#a8554d; font-weight:700;">&larr; rewired</span></div>
+          <div class="ba-formula"><span class="key">Platform Revenue</span> &nbsp;=&nbsp; Net Revenues &minus; Humira sales &nbsp;+&nbsp; Non-GAAP Income Before Taxes</div>
+        </div>
+        <div class="ba-block">
+          <div class="ba-when">FY2025 result</div>
+          <div class="ba-formula">Platform Revenue +19.6% YoY &middot; AIP capped at <strong>200% of target</strong></div>
+        </div>
+      </div>
+      <div class="ex-block" style="font-size: 0.78rem; color: #8a8a92; line-height: 1.4;">
+        Platform Revenue retained 2022 &rarr; 2025 (four consecutive years).
+      </div>
+    </aside>
+  </article>
+
+  <!-- Finding 04 — "Diversified" verbatim 6 years -->
+  <article class="finding" id="f04">
+    <div class="head">
+      <div class="f-num">Finding · <strong>04</strong></div>
+      <h3>&ldquo;Diversified&rdquo; for six years, verbatim. The concentration just changed names.</h3>
+      <p class="frame">Strategic Objectives bullet (i) reads identically in every 10-K from FY2020 through FY2025. The risk-factor sentence below it tells you what was actually happening.</p>
+      <footer class="prov">
+        <span class="conf conf-direct">Direct</span>
+        <span class="conf conf-inferred">Inferred</span>
+        <span class="src">FY20&ndash;FY25 10-K, Item 7 + Item 1A</span>
+        <a class="goto" href="#evolution">&rarr; &sect;03</a>
+        <a class="goto" href="#synthesis">&sect;09</a>
+      </footer>
+    </div>
+    <aside class="exhibit">
+      <div class="ex-label">Verbatim, 6 years running</div>
+      <blockquote style="margin: 0 0 0.7rem; padding: 0.45rem 0.75rem; background: #FAF8F2; border-left: 2px solid #d6cfb6; font-size: 0.86rem; line-height: 1.45; color: #2a2a30;">
+        &ldquo;maximizing the benefits of a diversified revenue base with multiple long-term growth drivers&rdquo;
+      </blockquote>
+      <div class="ex-label">Underneath, the concentration</div>
+      <div class="ex-row"><span class="yr">FY18</span><span class="txt">Humira <span class="pct">61%</span></span></div>
+      <div class="ex-row"><span class="yr">FY20</span><span class="txt">Humira <span class="pct">43%</span></span></div>
+      <div class="ex-row"><span class="yr">FY25</span><span class="txt"><strong>Skyrizi + Rinvoq</strong> <span class="pct">42%</span></span></div>
+    </aside>
+  </article>
+
+  <!-- Finding 05 — TA list rewritten FY25 -->
+  <article class="finding" id="f05">
+    <div class="head">
+      <div class="f-num">Finding · <strong>05</strong></div>
+      <h3>FY2025: the therapeutic-area list was rewritten for the first time in four years.</h3>
+      <p class="frame">The Company Overview's TA sequence sat unchanged FY2021 through FY2024. The FY2025 10-K rewrote it. <em>Eye care dropped. Neuroscience moved from fourth to second.</em></p>
+      <footer class="prov">
+        <span class="conf conf-direct">Direct</span>
+        <span class="src">FY21&ndash;FY25 10-K, Item 7 Company Overview</span>
+        <a class="goto" href="#ta-drift">&rarr; &sect;07 TA drift</a>
+      </footer>
+    </div>
+    <aside class="exhibit">
+      <div class="ex-label">The TA list, before and after</div>
+      <div class="ta-list">
+        <div class="ta-line">
+          <span class="ta-year-label">FY21&ndash;24</span>
+          <span class="ta-chip">immunology</span>
+          <span class="ta-chip">oncology</span>
+          <span class="ta-chip">aesthetics</span>
+          <span class="ta-chip">neuroscience</span>
+          <span class="ta-chip">eye care</span>
+        </div>
+        <div class="ta-line">
+          <span class="ta-year-label">FY25</span>
+          <span class="ta-chip">immunology</span>
+          <span class="ta-chip rank-up">neuroscience &uarr;</span>
+          <span class="ta-chip">oncology</span>
+          <span class="ta-chip">aesthetics</span>
+          <span class="ta-chip dropped">eye care</span>
+        </div>
+      </div>
+      <div class="ex-block" style="font-size: 0.78rem; color: #8a8a92; line-height: 1.4;">
+        FY25 list also adds <em>&ldquo;new sources of growth such as obesity&rdquo;</em>.
+      </div>
+    </aside>
+  </article>
+
+  <!-- Finding 06 — Neuroscience deals -->
+  <article class="finding" id="f06">
+    <div class="head">
+      <div class="f-num">Finding · <strong>06</strong></div>
+      <h3>Four of six largest 2018&ndash;2024 deals were neuroscience.</h3>
+      <p class="frame">Allergan, Cerevel, Aliada, and partnerships with Gilgamesh and Alector &mdash; all wholly or substantially neuroscience. The exception is ImmunoGen, oncology. Eleven weeks after Cerevel closed, lead asset <em>emraclidine</em> failed both Phase&nbsp;2 schizophrenia trials.</p>
+      <footer class="prov">
+        <span class="conf conf-inferred">Inferred</span>
+        <span class="conf conf-direct">Direct</span>
+        <span class="src">FY24 10-K &middot; 2026 DEF14A</span>
+        <a class="goto" href="#ta-drift">&rarr; &sect;07</a>
+        <a class="goto" href="#compensation">&sect;08</a>
+      </footer>
+    </div>
+    <aside class="exhibit">
+      <div class="ex-label">Six largest M&amp;A / in-license events</div>
+      <div class="deal-list">
+        <div class="deal-row">
+          <span class="deal-name">Allergan</span>
+          <span class="deal-size">$63&nbsp;B</span>
+          <span class="deal-cat neuro">neuro+</span>
+        </div>
+        <div class="deal-row">
+          <span class="deal-name">ImmunoGen</span>
+          <span class="deal-size">$10.1&nbsp;B</span>
+          <span class="deal-cat onc">onc</span>
+        </div>
+        <div class="deal-row">
+          <span class="deal-name">Cerevel</span>
+          <span class="deal-size">$8.7&nbsp;B</span>
+          <span class="deal-cat neuro">neuro</span>
+        </div>
+        <div class="deal-row">
+          <span class="deal-name">Aliada</span>
+          <span class="deal-size">$1.4&nbsp;B</span>
+          <span class="deal-cat neuro">neuro</span>
+        </div>
+        <div class="deal-row">
+          <span class="deal-name">Gilgamesh <small>(partnership)</small></span>
+          <span class="deal-size">&mdash;</span>
+          <span class="deal-cat neuro">neuro</span>
+        </div>
+        <div class="deal-row">
+          <span class="deal-name">Alector <small>(collaboration)</small></span>
+          <span class="deal-size">&mdash;</span>
+          <span class="deal-cat neuro">neuro</span>
+        </div>
+      </div>
+      <div class="ex-block" style="font-size: 0.78rem; color: #8a8a92; line-height: 1.45;">
+        Cerevel's lead asset emraclidine failed Phase&nbsp;2 in Nov&nbsp;2024 &rarr; <strong style="color:#a8554d;">$4.5B pre-tax impairment</strong> (Q4&nbsp;2024).
+      </div>
+    </aside>
+  </article>
+
+  <!-- Finding 07 — "Outstanding execution" -->
+  <article class="finding" id="f07">
+    <div class="head">
+      <div class="f-num">Finding · <strong>07</strong></div>
+      <h3>&ldquo;Outstanding execution&rdquo; is the most preserved phrase in the corpus.</h3>
+      <p class="frame">The 2018 mission was rewritten in 2020 &mdash; the words around &ldquo;outstanding execution&rdquo; were replaced almost entirely. The phrase itself survived. When &ldquo;execution&rdquo; gets a modifier, the modifier is overwhelmingly <em>commercial</em>.</p>
+      <footer class="prov">
+        <span class="conf conf-direct">Direct</span>
+        <span class="src">8 &times; 10-K Item 7 + 2026 DEF14A</span>
+        <a class="goto" href="#invariants">&rarr; &sect;04</a>
+        <a class="goto" href="#compensation">&sect;08</a>
+      </footer>
+    </div>
+    <aside class="exhibit">
+      <div class="ex-label">&ldquo;Execution&rdquo; in the corpus</div>
+      <div class="ex-row"><span class="yr">FY18</span><span class="txt">mission: &ldquo;outstanding <strong>execution</strong>&rdquo;</span></div>
+      <div class="ex-row"><span class="yr">FY19+</span><span class="txt">SO bullet: &ldquo;strong <strong>commercial execution</strong> of new product launches&rdquo;</span></div>
+      <div class="ex-row"><span class="yr">FY20</span><span class="txt">SO bullet: &ldquo;leveraging &hellip; <strong>commercial</strong> strength and international infrastructure&rdquo;</span></div>
+      <div class="ex-row"><span class="yr">FY24</span><span class="txt">SO bullet: &ldquo;Maximizing revenue growth of our key on-market products&rdquo;</span></div>
+      <div class="ex-row"><span class="yr">'26 proxy</span><span class="txt">NEO goal: &ldquo;<strong>Execute</strong> key strategic initiatives &hellip;&rdquo;</span></div>
+    </aside>
+  </article>
+
+  <!-- Finding 08 — Voluntary agreement -->
+  <article class="finding" id="f08">
+    <div class="head">
+      <div class="f-num">Finding · <strong>08</strong></div>
+      <h3>FY2025 introduces a new register: AbbVie negotiating directly with Washington.</h3>
+      <p class="frame">For seven years, regulatory policy was something that <em>happened to</em> the company. In FY2025 the language flips &mdash; a bilateral arrangement, $100&nbsp;B pledged, the U.S. government described as the party providing relief in exchange.</p>
+      <footer class="prov">
+        <span class="conf conf-direct">Direct</span>
+        <span class="conf conf-inferred">Inferred</span>
+        <span class="src">FY25 10-K, Item 7 Recent Events + Regulation</span>
+        <a class="goto" href="#y-2025">&rarr; &sect;01 FY2025</a>
+        <a class="goto" href="#pressure">&sect;05</a>
+      </footer>
+    </div>
+    <aside class="exhibit">
+      <div class="ex-label">The trigger &amp; the response</div>
+      <div class="ex-row"><span class="yr">Jan'25</span><span class="txt">HHS selects <strong>Vraylar</strong> for Medicare price-setting &rarr; 2027</span></div>
+      <div class="ex-row"><span class="yr">Jan'26</span><span class="txt">HHS selects <strong>Botox</strong> for price-setting &rarr; 2028</span></div>
+      <div class="ex-row add"><span class="yr">FY25 10-K</span><span class="txt">AbbVie pledges <strong>$100&nbsp;B</strong> over 10&nbsp;years</span></div>
+      <div class="ex-row add"><span class="yr">In return</span><span class="txt"><strong>3-year exemption</strong> from tariffs + future price mandates</span></div>
+      <div class="ex-block" style="font-size: 0.78rem; color: #8a8a92; line-height: 1.45;">
+        First &ldquo;voluntary agreement&rdquo; framing anywhere in 8 years of filings.
+      </div>
+    </aside>
+  </article>
+
+  <!-- Cross-cutting callout -->
+  <section class="cross-cutting" aria-label="cross-cutting observation">
+    <div class="cc-label">A cross-cutting observation</div>
+    <p class="cc-body">On July 1, 2024, Robert Michael succeeded Richard Gonzalez as CEO. Gonzalez had been chief executive since AbbVie's 2013 spin-off from Abbott &mdash; the founding CEO. Most CEO transitions come with at least a cosmetic language reset (new mission, new strategic framing, new vocabulary). AbbVie's strategic-objectives language barely shifted between FY2023 and FY2024, and again between FY2024 and FY2025. The most stable phrases in the corpus &mdash; <em>outstanding execution</em>, <em>diversified revenue base</em>, <em>strong and growing dividend</em> &mdash; all survived the transition intact. Whatever the corporation is, it appears to be more <strong>institutional than personal</strong>.</p>
+    <footer class="prov">
+      <span class="conf conf-inferred">Inferred</span>
+      <span style="color: #6b6b72;">FY23&ndash;FY25 10-Ks, Item 7 Strategic Objectives &middot; FY24 10-K, Item 7 Company Overview (CEO transition disclosure)</span>
+    </footer>
+  </section>
+
+  <p class="findings-closing">
+    Built on 16 EDGAR filings &mdash; eight AbbVie 10-Ks and eight DEF14A proxy statements, FY2018&ndash;FY2025. Full list with accession numbers and file paths at the <a href="#manifest">source manifest</a>.
+  </p>
+</section>
 
 
 <!-- ────────────────────────────────────────────────────────────────────── -->
@@ -833,11 +1431,11 @@ footer.coda code {
     </header>
     <div class="field">
       <div class="label">Self-desc.</div>
-      <div class="value">Company Overview unchanged from FY2022-FY2023. Two acquisitions close, then emraclidine — the headline Cerevel asset — fails its Phase 2 schizophrenia monotherapy trials in November 2024, triggering a $4.5B intangible asset impairment. The strategic-objectives section names Cerevel only obliquely (&ldquo;Maximizing the value of key acquisitions&rdquo;). <span class="conf conf-direct">Direct</span></div>
+      <div class="value">Company Overview unchanged from FY2022-FY2023. Two acquisitions close, then emraclidine — the headline Cerevel asset — fails its Phase 2 schizophrenia monotherapy trials in November 2024, triggering a $4.5B pre-tax intangible asset impairment (partial writedown of the $6.9B carrying value to a $2.4B fair value). The strategic-objectives section names Cerevel only obliquely (&ldquo;Maximizing the value of key acquisitions&rdquo;). <span class="conf conf-direct">Direct</span></div>
     </div>
     <div class="field">
       <div class="label">Pressure</div>
-      <div class="value">Three simultaneous shocks: $9.7B in deal-close cash outflow (ImmunoGen + Cerevel); CEO transition from Richard Gonzalez (founding CEO, 2013) to Robert Michael, July 2024; emraclidine impairment of $4.5B in November. Also: &ldquo;In January 2025, HHS&hellip;selected Vraylar and Linzess as two of the 15 medicines subject to government-set prices beginning in 2027&rdquo; — IRA now reaches AbbVie's neuroscience franchise. <span class="conf conf-direct">Direct</span></div>
+      <div class="value">Three simultaneous shocks: $9.7B in deal-close cash outflow (ImmunoGen + Cerevel); CEO transition from Richard Gonzalez (founding CEO, 2013) to Robert Michael, July 2024; $4.5B pre-tax emraclidine impairment in November. Also: &ldquo;In January 2025, HHS&hellip;selected Vraylar and Linzess as two of the 15 medicines subject to government-set prices beginning in 2027&rdquo; — IRA now reaches AbbVie's neuroscience franchise. <span class="conf conf-direct">Direct</span></div>
     </div>
     <div class="field">
       <div class="label">Shift</div>
@@ -1076,7 +1674,7 @@ footer.coda code {
           <td class="not-addressed">not addressed</td>
           <td class="not-addressed">not addressed</td>
           <td><span class="cell-conf direct"></span>"proposed Cerevel Therapeutics acquisition" — Strategic Objectives bullet</td>
-          <td><span class="cell-conf direct"></span>close + emraclidine impairment $4.5B; tavapadon Ph3 positive</td>
+          <td><span class="cell-conf direct"></span>close + $4.5B pre-tax emraclidine impairment; tavapadon Ph3 positive</td>
           <td><span class="cell-conf direct"></span>tavapadon NDA submitted; Cerevel framing not surfaced in 2026 SO bullets</td>
         </tr>
 
@@ -1217,7 +1815,7 @@ footer.coda code {
     <div class="inv-label">Invariant 02 · "outstanding execution" as legitimization</div>
     <div class="inv-statement">Operational execution is the moral and rhetorical center of the corporate identity — the thing the company can always claim even when scientific or commercial outcomes are mixed.</div>
     <div class="inv-evidence">Surface phrases: <em>&ldquo;capable of achieving top-tier financial performance through outstanding execution&rdquo;</em> (FY18 mission) — preserved verbatim through FY25. <em>&ldquo;strong commercial execution of new product launches&rdquo;</em> recurs in every Strategic Objectives bullet list FY19–FY25. The 2026 proxy NEO goals open with <em>&ldquo;Execute key strategic initiatives to drive sustainable long-term business performance.&rdquo;</em> Execution is the only word in the mission statement that survived the 2020 mission rewrite. <span class="conf conf-direct">Direct</span></div>
-    <div class="inv-strain">Strained by: the FY2024 emraclidine impairment. A $4.5B intangible-asset write-down following a Phase-2 failure is, by definition, a non-execution event — yet the FY2024 CD&amp;A narrative continues to credit each NEO with &ldquo;achiev[ing] or exceed[ing]&rdquo; their strategic goals.</div>
+    <div class="inv-strain">Strained by: the FY2024 emraclidine impairment. A $4.5B pre-tax intangible-asset write-down following a Phase-2 failure is, by definition, a non-execution event — yet the FY2024 CD&amp;A narrative continues to credit each NEO with &ldquo;achiev[ing] or exceed[ing]&rdquo; their strategic goals.</div>
   </div>
 
   <div class="invariant alt-3">
@@ -1373,7 +1971,7 @@ footer.coda code {
   <p>Neuroscience enters the post-Allergan TA-list as one of six leadership areas. The FY2020 Strategic Objectives include a bullet — &ldquo;Expansion of the company's revenue base from additional Allergan products contributing to key aesthetics and neuroscience portfolios&rdquo; — that pairs neuroscience with aesthetics as the primary <em>commercial contributions</em> from the deal. By FY2021, this hardens into its own bullet: <em>&ldquo;Neuroscience revenue growth driven by Vraylar, Botox Therapeutic, Ubrelvy and recently launched Qulipta.&rdquo;</em> First time the named franchises appear in a Strategic Objectives bullet rather than a product overview. <span class="conf conf-direct">Direct</span></p>
 
   <h4>Phase C · pipeline thesis era (FY2023–FY2024)</h4>
-  <p>FY2023 Strategic Objectives add the proposed Cerevel acquisition. The Cerevel rationale — articulated more fully in the FY2024 10-K — frames neuroscience as a pipeline thesis: <em>&ldquo;wide range of potentially best-in-class assets that may transform standards of care across psychiatric and neurological disorders where significant unmet needs remain for patients.&rdquo;</em> Two of these assets read out in 2024: tavapadon Phase 3 positive in Parkinson's (TEMPO-1, TEMPO-2), emraclidine Phase 2 negative in schizophrenia (EMPOWER-1, -2). The FY2024 10-K records both events plus a $4.5B intangible-asset impairment specific to emraclidine. <span class="conf conf-direct">Direct</span></p>
+  <p>FY2023 Strategic Objectives add the proposed Cerevel acquisition. The Cerevel rationale — articulated more fully in the FY2024 10-K — frames neuroscience as a pipeline thesis: <em>&ldquo;wide range of potentially best-in-class assets that may transform standards of care across psychiatric and neurological disorders where significant unmet needs remain for patients.&rdquo;</em> Two of these assets read out in 2024: tavapadon Phase 3 positive in Parkinson's (TEMPO-1, TEMPO-2), emraclidine Phase 2 negative in schizophrenia (EMPOWER-1, -2). The FY2024 10-K records both events plus a $4.5B pre-tax intangible-asset impairment specific to emraclidine (partial writedown, $6.9B carrying value → $2.4B fair value, per Note 7). <span class="conf conf-direct">Direct</span></p>
 
   <h4>Phase D · post-emraclidine reframing (FY2025)</h4>
   <p>The FY2025 Company Overview moves neuroscience from fourth to second in the TA list, the only TA to be reordered. The 2026 strategic objectives no longer mention Cerevel by name. Vyalev — an internal-origin Parkinson's franchise approved in the US in October 2024 — appears in the Strategic Objectives bullet for the first time as &ldquo;Vyalev/Produodopa.&rdquo; The rhetorical center of neuroscience moves from a single-asset, big-bet schizophrenia thesis (emraclidine, 2024) back to a franchise-portfolio thesis (Vraylar, Botox Therapeutic, Ubrelvy, Qulipta, Vyalev, plus tavapadon as a remaining pipeline anchor). <span class="conf conf-inferred">Inferred</span> from the changing composition of the named-products lists across FY2024 and FY2025 Strategic Objectives.</p>
@@ -1396,7 +1994,7 @@ footer.coda code {
   <div class="invariant alt-2" style="margin-top: 0.6rem;">
     <div class="inv-label">Neuroscience invariant · proposed, not validated</div>
     <div class="inv-statement">Neuroscience has been AbbVie's preferred site of strategic ambition — the TA where the company has consistently used acquisition to demonstrate that it can be a different kind of company than Humira-AbbVie was.</div>
-    <div class="inv-evidence">Surface evidence: of AbbVie's six largest M&amp;A or in-license events 2018–2024 (Allergan, ImmunoGen, Cerevel, Aliada, Gilgamesh, Alector), four are wholly or substantially neuroscience-targeted. The 2018 strategic objective list mentioned neuroscience only in pipeline framing; by FY2025 neuroscience is position 2 in the TA list and has its own product enumeration. The franchise has absorbed both the largest individual deal (Allergan, $63B) and the most reputationally costly individual asset failure (emraclidine, $4.5B impairment). <span class="conf conf-inferred">Inferred</span></div>
+    <div class="inv-evidence">Surface evidence: of AbbVie's six largest M&amp;A or in-license events 2018–2024 (Allergan, ImmunoGen, Cerevel, Aliada, Gilgamesh, Alector), four are wholly or substantially neuroscience-targeted. The 2018 strategic objective list mentioned neuroscience only in pipeline framing; by FY2025 neuroscience is position 2 in the TA list and has its own product enumeration. The franchise has absorbed both the largest individual deal (Allergan, $63B) and the most reputationally costly individual asset failure (emraclidine, $4.5B pre-tax impairment). <span class="conf conf-inferred">Inferred</span></div>
     <div class="inv-strain">Strained by: ImmunoGen ($10.1B) is oncology, not neuroscience, and it closed only six months before Cerevel. The full picture is "neuroscience and oncology are the M&amp;A targets," not "neuroscience uniquely." A second strain: post-emraclidine, AbbVie's 2026 strategic objectives do not name Cerevel explicitly, which suggests the company is repositioning away from a single-asset neuroscience thesis even as it elevates neuroscience in the TA list.</div>
   </div>
 </section>
@@ -1471,7 +2069,7 @@ footer.coda code {
     <li><strong>Allergan → ROIC (FY2020 PSU design).</strong> The company explicitly rewrote its long-term incentive metric to reward debt paydown rather than equity return — a direct response to the $63B Allergan debt load. <span class="conf conf-direct">Direct</span></li>
     <li><strong>Humira LOE → Platform Revenue (FY2022 AIP design).</strong> The company rewrote its annual-incentive metric to <em>exclude</em> the product accounting for ~37% of revenue. By the 2026 proxy, Platform Revenue is described as having grown 19.6% year-over-year and the AIP paid out at the maximum 200% of target. <span class="conf conf-direct">Direct</span></li>
   </ol>
-  <p>What did <em>not</em> change in a visible way: the November 2024 emraclidine failure ($4.5B impairment) does not surface in 2026 proxy NEO PSU adjustments or strategic-goal restatements. Each NEO is still credited as having &ldquo;achieved or exceeded&rdquo; their 2025 strategic goals. <span class="conf conf-inferred">Inferred</span></p>
+  <p>What did <em>not</em> change in a visible way: the November 2024 emraclidine failure ($4.5B pre-tax impairment) does not surface in 2026 proxy NEO PSU adjustments or strategic-goal restatements. Each NEO is still credited as having &ldquo;achieved or exceeded&rdquo; their 2025 strategic goals. <span class="conf conf-inferred">Inferred</span></p>
 
   <details class="evidence">
     <summary>Evidence · 3 verbatim CD&amp;A quotes</summary>
@@ -1639,9 +2237,12 @@ footer.coda code {
 </section>
 
 <footer class="coda">
-  <p>Source corpus: 16 EDGAR filings, AbbVie Inc. (CIK 0001551152), FY2018–FY2025. <code>data/company/abbvie/filings/</code></p>
-  <p>Companion pages: <a href="index.html">franchise revenue trajectory</a> &middot; <a href="story.html">portfolio &amp; pipeline swimlane</a></p>
-  <p style="color:#a8a497; font-size: 12px; letter-spacing: 0.05em;">Per the spec's hard rules: every quote is verbatim from the named filing; every analytical claim carries a confidence tag; sections requiring corpus not present in this repository are omitted rather than fabricated.</p>
+  <div class="disclosure-footer" role="note">
+    <span class="label">Disclosure</span>Nick Strehlke is a director at AbbVie. This analysis is an outside-in research artifact built solely from public EDGAR filings (Forms 10-K, DEF14A) and contains no non-public information. Nothing here is investment advice, a recommendation, or a statement made on behalf of AbbVie.
+  </div>
+  <p style="margin-top: 1.2rem;">Source corpus: 16 EDGAR filings, AbbVie Inc. (CIK 0001551152), FY2018&ndash;FY2025. See <a href="#manifest">source manifest</a> for accession numbers.</p>
+  <p>Companion pages: <a href="revenue.html">franchise revenue trajectory</a> &middot; <a href="story.html">portfolio &amp; pipeline swimlane</a> &middot; <a href="index.html">landing</a></p>
+  <p style="color:#a8a497; font-size: 12px; letter-spacing: 0.05em;">Per the page's hard rules: every quote is verbatim from the named filing; every analytical claim carries a confidence tag; sections requiring corpus not present in this repository are omitted rather than fabricated.</p>
 </footer>
 
 </main>
@@ -1649,7 +2250,7 @@ footer.coda code {
 
 <script>
 // Highlight the current section in the side nav as the user scrolls.
-const sections = ["timeline","migration","evolution","invariants","pressure",
+const sections = ["findings","timeline","migration","evolution","invariants","pressure",
                   "boilerplate","ta-drift","compensation","synthesis","manifest"]
   .map(id => document.getElementById(id))
   .filter(Boolean);
